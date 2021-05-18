@@ -12,14 +12,14 @@ struct Student {
 	int english;
 	//double average;
 	int average;
-	long rank;//ÁùÎ»ÊıµÄid£¬Ò»¹²ÈİĞí999999¸örank
+	long rank;//å…­ä½æ•°çš„idï¼Œä¸€å…±å®¹è®¸999999ä¸ªrank
 	int type;//priority, average:3, cLanguage:2, math:1, english:0
-	bool operator == (const int &operand) {//ÕâÖÖ×ö·¨ÒªÊìÏ¤£¡
+	bool operator == (const int &operand) {//è¿™ç§åšæ³•è¦ç†Ÿæ‚‰ï¼
 		return this->id == operand;
 	}
 };
 
-bool cmpC(Student a, Student b) {//Ğ´·¨ÉÏ£¬Èç¹û½«¿ÆÄ¿ÕûºÏµ½Êı×éÀï¿ÉÒÔ¼ò»¯Õâ²¿·Ö´úÂë£¬µ«ÎÒÃ»ÓĞÄÇÃ´×ö£¬ÁíÒ»ÖÖ×ö·¨²Î¼ûÁø‹S²©¿Í
+bool cmpC(Student a, Student b) {//å†™æ³•ä¸Šï¼Œå¦‚æœå°†ç§‘ç›®æ•´åˆåˆ°æ•°ç»„é‡Œå¯ä»¥ç®€åŒ–è¿™éƒ¨åˆ†ä»£ç ï¼Œä½†æˆ‘æ²¡æœ‰é‚£ä¹ˆåšï¼Œå¦ä¸€ç§åšæ³•å‚è§æŸ³å©¼åšå®¢
 	return a.cLanguage > b.cLanguage;
 }
 
@@ -48,19 +48,19 @@ int main(int argc, char *argv[]) {
 	}
 
 	char priority[] = {'E', 'M', 'C', 'A' };
-	//°´priorityË³ĞòÅÅËÄ´Î
-	sort(students, students + N, cmpA);//Æ½¾ù·Ö
+	//æŒ‰priorityé¡ºåºæ’å››æ¬¡
+	sort(students, students + N, cmpA);//å¹³å‡åˆ†
 	students[0].rank = 1;
 	for (int i = 1; i < N; i++)
 		students[i].rank = students[i].average == students[i - 1].average ? students[i - 1].rank : i + 1;
 	
-	//´ÓÕâÀïÍùºóÈı¶Î¿ÉÒÔÕûºÏ³Éº¯Êı£¬µ«ÊÇÃ»±ØÒª
-	sort(students, students + N, cmpC);//CÓïÑÔ
+	//ä»è¿™é‡Œå¾€åä¸‰æ®µå¯ä»¥æ•´åˆæˆå‡½æ•°ï¼Œä½†æ˜¯æ²¡å¿…è¦
+	sort(students, students + N, cmpC);//Cè¯­è¨€
 	if (students[0].rank > 1) {
 		students[0].rank = 1;
 		students[0].type = 2;
 	}
-	for (int i = 1; i < N; i++) {//¿ÉÒÔ¼ò»¯Ò»ÏÂĞ´·¨£¿ºÃÏñÃ»·¨ÓÃÈıÄ¿´úÌæ
+	for (int i = 1; i < N; i++) {//å¯ä»¥ç®€åŒ–ä¸€ä¸‹å†™æ³•ï¼Ÿå¥½åƒæ²¡æ³•ç”¨ä¸‰ç›®ä»£æ›¿
 		if (students[i].cLanguage == students[i - 1].cLanguage)
 			if (students[i].rank > students[i - 1].rank) {
 				students[i].rank = students[i - 1].rank;
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
 			}
 			else;
 	}
-	sort(students, students + N, cmpM);//ÊıÑ§
+	sort(students, students + N, cmpM);//æ•°å­¦
 	if (students[0].rank > 1) {
 		students[0].rank = 1;
 		students[0].type = 1;
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
 			}
 			else;
 	}
-	sort(students, students + N, cmpE);//Ó¢Óï
+	sort(students, students + N, cmpE);//è‹±è¯­
 	if (students[0].rank > 1) {
 		students[0].rank = 1;
 		students[0].type = 0;
@@ -118,13 +118,13 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < M; i++) {
 		scanf("%ld", &id);
 		result = find(students, students + N, id);
-		if (result == students + N)//STLÀïµÄ¶ş·Ö²éÕÒÊìÁ·ÁË»áºÜ·½±ã
-			printf("N/A\n");//Ô­À´²»ĞèÒªÅĞ¶Ï»»ĞĞ£¡
+		if (result == students + N)//STLé‡Œçš„äºŒåˆ†æŸ¥æ‰¾ç†Ÿç»ƒäº†ä¼šå¾ˆæ–¹ä¾¿
+			printf("N/A\n");//åŸæ¥ä¸éœ€è¦åˆ¤æ–­æ¢è¡Œï¼
 		else
 			printf("%ld %c\n", result->rank, priority[result->type]);
 	}
 
-	//ÓÃÏÂÃæÕâÖÖ²éÖµĞ´·¨ÑéÖ¤ÁËÉÏÃæSTL¶ş·Ö²éÕÒµÄ½á¹ûÊÇÕıÈ·µÄ
+	//ç”¨ä¸‹é¢è¿™ç§æŸ¥å€¼å†™æ³•éªŒè¯äº†ä¸Šé¢STLäºŒåˆ†æŸ¥æ‰¾çš„ç»“æœæ˜¯æ­£ç¡®çš„
 	//int id;
 	//for (int i = 0; i < M; i++) {
 	//	scanf("%ld", &id);
@@ -142,5 +142,5 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//Ğ´ÍêÖ®ºó²âÊÔµã1 2³ö´íÁË
-//ÏëÁËÒ»¸öĞ¡Ê±Ã»ÕÒ³öÀ´µ½µ×´íÔÚÄÄ
+//å†™å®Œä¹‹åæµ‹è¯•ç‚¹1 2å‡ºé”™äº†
+//æƒ³äº†ä¸€ä¸ªå°æ—¶æ²¡æ‰¾å‡ºæ¥åˆ°åº•é”™åœ¨å“ª

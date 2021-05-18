@@ -12,7 +12,7 @@ struct Motherfucker {
 };
 
 bool cmp1(Motherfucker a, Motherfucker b) {
-	return a.id < b.id;//id²»¿ÉÄÜÏàÍ¬
+	return a.id < b.id;//idä¸å¯èƒ½ç›¸åŒ
 }
 
 bool cmp2(Motherfucker a, Motherfucker b) {
@@ -54,4 +54,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//ÕâÌâÖµ25£¿
+//è¿™é¢˜å€¼25ï¼Ÿ

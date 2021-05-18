@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 	long long nin = 1000000001, nax = -1;
 	long long *nins = new long long[N];
 	long long *naxs = new long long[N];
-	//¸ÕÄÃµ½ÌâµÄË¼Â·ÊÇ¼ÇÂ¼ÏÂÃ¿¸öÔªËØ×ó±ßµÄ×î´óÖµnaxºÍÓÒ±ßµÄ×îĞ¡Öµnin£¬ĞèÒª±éÀúÁ½±é¡£
+	//åˆšæ‹¿åˆ°é¢˜çš„æ€è·¯æ˜¯è®°å½•ä¸‹æ¯ä¸ªå…ƒç´ å·¦è¾¹çš„æœ€å¤§å€¼naxå’Œå³è¾¹çš„æœ€å°å€¼ninï¼Œéœ€è¦éå†ä¸¤éã€‚
 	for (long long i = 0; i < N; i++) {
 		scanf("%lld", &nums[i]);
 		naxs[i] = nax;
@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
 			nin = nums[i];
 	}
 	nins[N - 1] = 1000000001;
-	//¿´¿´ÄÄĞ©¿ÉÒÔ×÷Îªpivot
+	//çœ‹çœ‹å“ªäº›å¯ä»¥ä½œä¸ºpivot
 	long long count = 0;
 	vector<long long> answer;
 	for (long long i = 0; i < N; i++) {
-		if (naxs[i] <= nums[i] && nins[i] >= nums[i]) {//Ç§Íò×¢Òâ²»Òª°ÑninsºÍnaxsÅª·´ÁË£¬×î´óÖµÊÇ×ó±ßµÄĞ¡Êı£¬×îĞ¡ÖµÊÇ×ó±ßµÄ´óÊı
+		if (naxs[i] <= nums[i] && nins[i] >= nums[i]) {//åƒä¸‡æ³¨æ„ä¸è¦æŠŠninså’Œnaxså¼„åäº†ï¼Œæœ€å¤§å€¼æ˜¯å·¦è¾¹çš„å°æ•°ï¼Œæœ€å°å€¼æ˜¯å·¦è¾¹çš„å¤§æ•°
 			answer.push_back(nums[i]);
 			count++;
 		}
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 	//	printf("%lld %lld\n", naxs[i], nins[i]);
 	//}
 	//system("pause");
-	if (answer.empty()) { printf("\n"); return 0; }//Ò»¶¨Ò»¶¨×¢ÒâÕâÀïµÄ¸ñÊ½£¬¸ñÊ½ÎÊÌâµäĞÍ£¡Êä³ö0µÄÊ±ºòÊÇÊä³ö0\n\n£¬Ğ´µ½±¸×¢Àï¡£
+	if (answer.empty()) { printf("\n"); return 0; }//ä¸€å®šä¸€å®šæ³¨æ„è¿™é‡Œçš„æ ¼å¼ï¼Œæ ¼å¼é—®é¢˜å…¸å‹ï¼è¾“å‡º0çš„æ—¶å€™æ˜¯è¾“å‡º0\n\nï¼Œå†™åˆ°å¤‡æ³¨é‡Œã€‚
 	printf("%lld", answer[0]);
 	for (long long i = 1; i < answer.size(); i++) {
 		printf(" %lld", answer[i]);
@@ -49,5 +49,5 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//Ò»´Î¹ı£¬ÕâµÀÌâ±ÈPATsÄÇµÀÌâÖ±¹ÛºÜ¶à£¬ºÜÈİÒ×Ïëµ½¡£
-//Ò»¶¨Ò»¶¨×¢ÒâÕâÀïµÄ¸ñÊ½£¬¸ñÊ½ÎÊÌâµäĞÍ£¡Êä³ö0µÄÊ±ºòÊÇÊä³ö0\n\n£¬Ğ´µ½±¸×¢Àï¡£
+//ä¸€æ¬¡è¿‡ï¼Œè¿™é“é¢˜æ¯”PATsé‚£é“é¢˜ç›´è§‚å¾ˆå¤šï¼Œå¾ˆå®¹æ˜“æƒ³åˆ°ã€‚
+//ä¸€å®šä¸€å®šæ³¨æ„è¿™é‡Œçš„æ ¼å¼ï¼Œæ ¼å¼é—®é¢˜å…¸å‹ï¼è¾“å‡º0çš„æ—¶å€™æ˜¯è¾“å‡º0\n\nï¼Œå†™åˆ°å¤‡æ³¨é‡Œã€‚

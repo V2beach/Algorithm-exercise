@@ -14,14 +14,14 @@ int main(int argc, char *argv[]) {
 	long N;
 	int M;
 	scanf("%ld %d", &N, &M);
-	int hashTable[10001];//¿ÉÄÜÊÇÁ½¸öÒ»ÑùµÄ£¿
+	int hashTable[10001];//å¯èƒ½æ˜¯ä¸¤ä¸ªä¸€æ ·çš„ï¼Ÿ
 	memset(hashTable, 0, 10001 * sizeof(int));
 	int *coins = new int[N];
 	for (int i = 0; i < N; i++) {
 		scanf("%d", &coins[i]);
 		hashTable[coins[i]]++;
 	}
-	vector<int*> result;//²»ÄÜÖ±½Óint[2]£¿
+	vector<int*> result;//ä¸èƒ½ç›´æ¥int[2]ï¼Ÿ
 	for (int i = 0; i < N; i++) {
 		if (coins[i] + coins[i] == M)
 			if (hashTable[coins[i]] > 1) {
@@ -47,5 +47,5 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//Ì«¹ÖÁË£¬ÓÖÊÇÕâÖÖÇé¿ö£¬g++ºÍclang++½á¹û²»Ò»Ñù£¬¶øÇÒÔÚÅ£¿ÍÒ²ÅÜ²»Í¨
-//Õâ¸ö´úÂëĞ´µÃÌ«³óÁË£¬Òª¸Ä£¡£¡£¡ÊéÉÏµÄË¼Â·²»´í£¬´Ó1±éÀúµ½M
+//å¤ªæ€ªäº†ï¼Œåˆæ˜¯è¿™ç§æƒ…å†µï¼Œg++å’Œclang++ç»“æœä¸ä¸€æ ·ï¼Œè€Œä¸”åœ¨ç‰›å®¢ä¹Ÿè·‘ä¸é€š
+//è¿™ä¸ªä»£ç å†™å¾—å¤ªä¸‘äº†ï¼Œè¦æ”¹ï¼ï¼ï¼ä¹¦ä¸Šçš„æ€è·¯ä¸é”™ï¼Œä»1éå†åˆ°M

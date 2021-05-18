@@ -2,12 +2,12 @@
 #include <cstdio>
 #include <cstdlib>
 
-struct Record {//²»ĞèÒªchar time[8]ÁË£¬Ñ§Ò»ÏÂÊéÉÏÖ±½Ó¶Áhour minute second
+struct Record {//ä¸éœ€è¦char time[8]äº†ï¼Œå­¦ä¸€ä¸‹ä¹¦ä¸Šç›´æ¥è¯»hour minute second
 	char id[15];
 	int hour, minute, second;
 };
 
-int main(int argc, char *argv[]) {//ÕÒ×îÔç×ßµÄºÍ×îÍí×ßµÄ
+int main(int argc, char *argv[]) {//æ‰¾æœ€æ—©èµ°çš„å’Œæœ€æ™šèµ°çš„
 	int M;
 	scanf("%d", &M);
 	M = M * 2;

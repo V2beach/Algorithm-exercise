@@ -19,16 +19,16 @@ bool cmp2(Applicant a, Applicant b) {
 	return a.id < b.id;
 }
 
-int main(int argc, char *argv[]) {//¶ÁÑĞµÄÉêÇë
+int main(int argc, char *argv[]) {//è¯»ç ”çš„ç”³è¯·
 	int N, M, K;
 	scanf("%d %d %d", &N, &M, &K);
-	int *quota = new int[M];//ÏŞ¶î
+	int *quota = new int[M];//é™é¢
 	for (int i = 0; i < M; i++)
 		scanf("%d", &quota[i]);
 	vector<Applicant> applicants(N);
-	vector<vector<Applicant>> schools(M);//¿ÉÄÜÂ¼²»Âú»òÕßÂ¼³¬£¬¾ÍÖ±½ÓÓÃvectorÁË
-	int *rank = new int[M];//Ñ§Ğ£ÀïÂ¼È¡µÄ×îµÍ·ÖÑ§ÉúµÄrank
-	//Â¼ÈëÉêÇëÕßÊı¾İ
+	vector<vector<Applicant>> schools(M);//å¯èƒ½å½•ä¸æ»¡æˆ–è€…å½•è¶…ï¼Œå°±ç›´æ¥ç”¨vectoräº†
+	int *rank = new int[M];//å­¦æ ¡é‡Œå½•å–çš„æœ€ä½åˆ†å­¦ç”Ÿçš„rank
+	//å½•å…¥ç”³è¯·è€…æ•°æ®
 	for (int i = 0; i < N; i++) {
 		int *choices = new int[K];
 		applicants[i].id = i;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {//¶ÁÑĞµÄÉêÇë
 			scanf("%d", &choices[j]);
 		applicants[i].choices = choices;
 	}
-	//ÉêÇëÕßÅÅÃû
+	//ç”³è¯·è€…æ’å
 	sort(applicants.begin(), applicants.end(), cmp1);
 	applicants[0].rank = 0;
 	for (int i = 1; i < N; i++) {
@@ -46,12 +46,12 @@ int main(int argc, char *argv[]) {//¶ÁÑĞµÄÉêÇë
 			applicants[i].rank = applicants[i - 1].rank;
 		else applicants[i].rank = i;
 	}
-	//Ñ§Ğ£°´rankÂ¼È¡ÉêÇëÕß
-	//ÕâÀï¿¼ÂÇÁËÁ½ÖÖ·½·¨£¬Ò»ÖÖÊÇÑ§Ğ£Ñ¡Ñ§Éú£¬Ò»ÖÖÊÇÑ§ÉúÑ¡Ñ§Ğ££¬Ñ¡ÁËºóÕß
-	//K¸öÖ¾Ô¸Ó¦¸ÃÊÇÍ¬µÈµÄ£¬ÌâÄ¿ÀïÃ»ËµÏÈÂ¼ÂúµÚÒ»Ö¾Ô¸ÔÙÂ¼µÚ¶şÖ¾Ô¸£¬Èç¹û´íÁËÔÙ¸Ä
-	for (int i = 0; i < N; i++) {//µÚi¸öÑ§Éú
-		for (int j = 0; j < K; j++) {//µÄµÚj¸öÖ¾Ô¸
-			if (quota[applicants[i].choices[j]] > 0) {//applicants[i].choices[j]Õâ¸ö¾ÍÊÇÑ§Ğ£µÄĞòºÅ
+	//å­¦æ ¡æŒ‰rankå½•å–ç”³è¯·è€…
+	//è¿™é‡Œè€ƒè™‘äº†ä¸¤ç§æ–¹æ³•ï¼Œä¸€ç§æ˜¯å­¦æ ¡é€‰å­¦ç”Ÿï¼Œä¸€ç§æ˜¯å­¦ç”Ÿé€‰å­¦æ ¡ï¼Œé€‰äº†åè€…
+	//Kä¸ªå¿—æ„¿åº”è¯¥æ˜¯åŒç­‰çš„ï¼Œé¢˜ç›®é‡Œæ²¡è¯´å…ˆå½•æ»¡ç¬¬ä¸€å¿—æ„¿å†å½•ç¬¬äºŒå¿—æ„¿ï¼Œå¦‚æœé”™äº†å†æ”¹
+	for (int i = 0; i < N; i++) {//ç¬¬iä¸ªå­¦ç”Ÿ
+		for (int j = 0; j < K; j++) {//çš„ç¬¬jä¸ªå¿—æ„¿
+			if (quota[applicants[i].choices[j]] > 0) {//applicants[i].choices[j]è¿™ä¸ªå°±æ˜¯å­¦æ ¡çš„åºå·
 				schools[applicants[i].choices[j]].push_back(applicants[i]);
 				quota[applicants[i].choices[j]]--;
 				rank[applicants[i].choices[j]] = applicants[i].rank;
@@ -64,9 +64,9 @@ int main(int argc, char *argv[]) {//¶ÁÑĞµÄÉêÇë
 			else;
 		}
 	}
-	//¸ù¾İidÅÅĞòºóÊä³ö
+	//æ ¹æ®idæ’åºåè¾“å‡º
 	for (int i = 0; i < M; i++) {
-		if (!schools[i].empty()) {//vectorÒªÓÃempty¶ø²»ÊÇsize==0À´ÅĞ¿Õ£¡
+		if (!schools[i].empty()) {//vectorè¦ç”¨emptyè€Œä¸æ˜¯size==0æ¥åˆ¤ç©ºï¼
 			sort(schools[i].begin(), schools[i].end(), cmp2);
 			printf("%d", schools[i][0].id);
 			for (int j = 1; j < schools[i].size(); j++)
@@ -77,14 +77,14 @@ int main(int argc, char *argv[]) {//¶ÁÑĞµÄÉêÇë
 	system("pause");
 	return 0;
 }
-//Ğ´Ìâ°ëĞ¡Ê±£¬Ìá½»ÅÅ¶Ó°ëĞ¡Ê±£¬¾øÁË¡£
-//±»ÎÒ·¢ÏÖÁË£¡Å£¿ÍOJÒ²ÓĞÕâĞ©Ìâ¡£
-//µ½µ×ÎªÊ²Ã´ËùÓĞµÄÓÃÀıÔÚÎÒÕâ¸öMVSÉÏ¶¼ÄÜÅÜÍ¨£¬µ½ÁËOJ¾ÍÈ«¶¼²»Í¨£¿
-//ÎÒÕæµÄÊÇ±»Æøµ½ÍÂÑªÁË£¬ÓÖÊÇÀË·ÑÁËÕûÕûÈı¸öĞ¡Ê±£¡
-//Ì¤ÂíÎÒ´òÓ¡µÄÊÇApplicant schools[i][j]£¬mvs»á×Ô¶¯Êä³öµÚÒ»¸öÖµint id£¬ËùÒÔÎÒÃ»ÓĞ·¢ÏÖ£¡
-//µÚÒ»£¡Òª¿´warning£¡£¡£¡Òª¿´warning£¡£¡£¡Òª¿´warning£¡£¡£¡
-//µÚ¶ş£¡Å£¿ÍOJ´òÓ¡³öÀ´µØÖ·£¬µÚÒ»·´Ó¦¿ÉÄÜÊÇÃ»³õÊ¼»¯£¬»òÕß¾ÍÖ±½ÓÊä³öÁËµØÖ·£¬µÚ¶ş·´Ó¦ÒªÏëÒ»ÏÂ×Ô¼ºÊÇ²»ÊÇ°Ñ½á¹¹Ìå»òÕßËµ¶ÔÏó¸øÖ±½ÓÊä³öÁË£¡
-//Ğ´µ½Ìâ½â±¸×¢Àï¡£
+//å†™é¢˜åŠå°æ—¶ï¼Œæäº¤æ’é˜ŸåŠå°æ—¶ï¼Œç»äº†ã€‚
+//è¢«æˆ‘å‘ç°äº†ï¼ç‰›å®¢OJä¹Ÿæœ‰è¿™äº›é¢˜ã€‚
+//åˆ°åº•ä¸ºä»€ä¹ˆæ‰€æœ‰çš„ç”¨ä¾‹åœ¨æˆ‘è¿™ä¸ªMVSä¸Šéƒ½èƒ½è·‘é€šï¼Œåˆ°äº†OJå°±å…¨éƒ½ä¸é€šï¼Ÿ
+//æˆ‘çœŸçš„æ˜¯è¢«æ°”åˆ°åè¡€äº†ï¼Œåˆæ˜¯æµªè´¹äº†æ•´æ•´ä¸‰ä¸ªå°æ—¶ï¼
+//è¸é©¬æˆ‘æ‰“å°çš„æ˜¯Applicant schools[i][j]ï¼Œmvsä¼šè‡ªåŠ¨è¾“å‡ºç¬¬ä¸€ä¸ªå€¼int idï¼Œæ‰€ä»¥æˆ‘æ²¡æœ‰å‘ç°ï¼
+//ç¬¬ä¸€ï¼è¦çœ‹warningï¼ï¼ï¼è¦çœ‹warningï¼ï¼ï¼è¦çœ‹warningï¼ï¼ï¼
+//ç¬¬äºŒï¼ç‰›å®¢OJæ‰“å°å‡ºæ¥åœ°å€ï¼Œç¬¬ä¸€ååº”å¯èƒ½æ˜¯æ²¡åˆå§‹åŒ–ï¼Œæˆ–è€…å°±ç›´æ¥è¾“å‡ºäº†åœ°å€ï¼Œç¬¬äºŒååº”è¦æƒ³ä¸€ä¸‹è‡ªå·±æ˜¯ä¸æ˜¯æŠŠç»“æ„ä½“æˆ–è€…è¯´å¯¹è±¡ç»™ç›´æ¥è¾“å‡ºäº†ï¼
+//å†™åˆ°é¢˜è§£å¤‡æ³¨é‡Œã€‚
 /*
 5 5 3
 0 0 0 5 5

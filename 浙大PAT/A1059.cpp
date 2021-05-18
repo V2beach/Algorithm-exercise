@@ -18,33 +18,33 @@ long long findPrime(Factor* &factors, bool prime[nax], long long limit) {
 		if (!prime[i]) {
 			prime[i] = true;
 			factors[index++].prime = i;
-			for (long long j = i + 1; j <= limit; j++)//É¸µôÕâ¸öÖÊÊıµÄËùÓĞ±¶Êı
+			for (long long j = i + 1; j <= limit; j++)//ç­›æ‰è¿™ä¸ªè´¨æ•°çš„æ‰€æœ‰å€æ•°
 				if (j % i == 0) prime[j] = true;
 		}
 	return index;
 }
 
 int main(int argc, char *argv[]) {
-	//1.¹¹½¨½á¹¹Ìå¼ÇÂ¼ÖÊÒò×ÓÒÔ¼°³öÏÖ´ÎÊı
-	Factor *factors = new Factor[nax];//¾¡Á¿¿ªµÃ´óÒ»µã£¬ºóÃæÔÙĞŞÕı
+	//1.æ„å»ºç»“æ„ä½“è®°å½•è´¨å› å­ä»¥åŠå‡ºç°æ¬¡æ•°
+	Factor *factors = new Factor[nax];//å°½é‡å¼€å¾—å¤§ä¸€ç‚¹ï¼Œåé¢å†ä¿®æ­£
 	bool prime[nax];
 	memset(prime, false, nax * sizeof(bool));
-	//2.É¸·¨´æ´¢ËØÊı±í
+	//2.ç­›æ³•å­˜å‚¨ç´ æ•°è¡¨
 	long long N, fuck, shit = 0;
 	scanf("%lld", &N);
 	printf("%lld=", N);
-	if (N == 1) printf("1");//±ß½çÌõ¼ş£¡1ºÍ2147473647ÕâÖÖ£¬ÒòÎªÖÊÊı±íÀïÃ»ÓĞ1£¬ÆäËûÖÊÊıÊÇ¿ÉÒÔÖ±½ÓÊä³öµÄ¡£
+	if (N == 1) printf("1");//è¾¹ç•Œæ¡ä»¶ï¼1å’Œ2147473647è¿™ç§ï¼Œå› ä¸ºè´¨æ•°è¡¨é‡Œæ²¡æœ‰1ï¼Œå…¶ä»–è´¨æ•°æ˜¯å¯ä»¥ç›´æ¥è¾“å‡ºçš„ã€‚
 	long long sqr = sqrt(N);
 	fuck = findPrime(factors, prime, sqr);
-	//3.´Ó1¡úsqrt(n)±éÀú£¬Ö»»áÓĞ0¡ú1¸ö´óÓÚsqrt(n)µÄÒò×Ó
+	//3.ä»1â†’sqrt(n)éå†ï¼Œåªä¼šæœ‰0â†’1ä¸ªå¤§äºsqrt(n)çš„å› å­
 	for (long long i = 0; i < fuck; i++) {
 		if (N % factors[i].prime == 0) {
 			N /= factors[i].prime;
-			factors[i--].times++;//ÖØ¸´²âÊÔÕâ¸öÊı
+			factors[i--].times++;//é‡å¤æµ‹è¯•è¿™ä¸ªæ•°
 			shit++;
 		}
 	}
-	if (N > 1) {//×îºóÒ»¸öÒò×Ó
+	if (N > 1) {//æœ€åä¸€ä¸ªå› å­
 		factors[fuck].prime = N;
 		factors[fuck++].times++;
 	}
@@ -62,4 +62,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//±¸×¢£¬Ñ§»á²âÊÔ±ß½çÌõ¼şµÄÖØÒªĞÔÔÚÕâÌâÌåÏÖµÃºÜºÃ£¬´òÓ¡ÖÊÒò×ÓÕâ¸öÌâºÜ¾­µä¡£
+//å¤‡æ³¨ï¼Œå­¦ä¼šæµ‹è¯•è¾¹ç•Œæ¡ä»¶çš„é‡è¦æ€§åœ¨è¿™é¢˜ä½“ç°å¾—å¾ˆå¥½ï¼Œæ‰“å°è´¨å› å­è¿™ä¸ªé¢˜å¾ˆç»å…¸ã€‚

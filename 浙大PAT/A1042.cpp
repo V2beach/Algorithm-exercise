@@ -5,10 +5,10 @@
 
 using namespace std;
 
-int *shuffle(int card[], int order[]) {//cardÊÇÏ´ÅÆÇ°µÄÅÆĞò
+int *shuffle(int card[], int order[]) {//cardæ˜¯æ´—ç‰Œå‰çš„ç‰Œåº
 	int *result = (int *)malloc(54 * sizeof(int));
 
-	for (int i = 0; i < 54; i++)//Ñ­»·54´Î
+	for (int i = 0; i < 54; i++)//å¾ªç¯54æ¬¡
 		result[order[i]] = card[i];
 
 	return result;
@@ -18,23 +18,23 @@ int main(int argc, char *argv[]) {
 	int k;//k<=20
 	scanf("%d", &k);
 
-	int card[54];//Ã¿¸öÊı×Ö¶ÔÓ¦Ò»ÕÅ¹Ì¶¨µÄÅÆ£¬±ÈÈçcard[3]ÊÇ15£¬ÄÇÃ´µÚÈıÕÅÅÆ¾ÍÊÇHeart2
+	int card[54];//æ¯ä¸ªæ•°å­—å¯¹åº”ä¸€å¼ å›ºå®šçš„ç‰Œï¼Œæ¯”å¦‚card[3]æ˜¯15ï¼Œé‚£ä¹ˆç¬¬ä¸‰å¼ ç‰Œå°±æ˜¯Heart2
 	int *result;
-	for (int i = 0; i < 54; i++)//µ¥Ä¿ÔËËã·û¾Í²»ÓÃ¿Õ¸ñÁË
+	for (int i = 0; i < 54; i++)//å•ç›®è¿ç®—ç¬¦å°±ä¸ç”¨ç©ºæ ¼äº†
 		card[i] = i + 1;
 
-	int order[54];//Ï´ÅÆË³Ğò
+	int order[54];//æ´—ç‰Œé¡ºåº
 	for (int i = 0; i < 54; i++) {
 		scanf("%d", &order[i]);
-		order[i]--;//¶ÔÓ¦Êı×éÎ»ÖÃ
+		order[i]--;//å¯¹åº”æ•°ç»„ä½ç½®
 	}
 
-	//Ï´ÅÆ
+	//æ´—ç‰Œ
 	result = card;
 	for (int i = 0; i < k; i++)
 		result = shuffle(result, order);
 
-	//°´¸ñÊ½Êä³ö½á¹û
+	//æŒ‰æ ¼å¼è¾“å‡ºç»“æœ
 	char map[5] = { 'S', 'H', 'C', 'D', 'J' };
 	int j = 0;
 	for (int i = 0; i < 54; i++) {

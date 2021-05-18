@@ -59,4 +59,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//���ڼ򵥣�������ôʡ����ôд�ˣ�ָд��һ��Ȼ����ճ������
+//过于简单，所以怎么省事怎么写了（指写完一段然后复制粘贴）。

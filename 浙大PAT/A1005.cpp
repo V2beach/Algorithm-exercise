@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	int sum = 0;
-	//while (scanf("%1d", &digit) != EOF)≤ª∫√ π
+	//while (scanf("%1d", &digit) != EOF)‰∏çÂ•Ω‰Ωø
 	char buffer[101];
 	scanf("%s", buffer);
 	for (int i = 0; i < strlen(buffer); i++)
@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 	for (int i = 1; i < strlen(buffer); i++)
 		printf(" %s", num[buffer[i] - '0']);
 		/*if (i != strlen(buffer) - 1)
-			printf(" ");’‚—˘≈–∂œª·¬˝“ªµ„*/
+			printf(" ");ËøôÊ†∑Âà§Êñ≠‰ºöÊÖ¢‰∏ÄÁÇπ*/
 	system("pause");
 	return 0;
 }

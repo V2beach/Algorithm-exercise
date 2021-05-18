@@ -12,20 +12,20 @@ int main(int argc, char *argv[]) {
 	int *D = new int[N + 1];
 	D[0] = 0;
 	int sum = 0;
-	for (int i = 1; i <= N; i++) {//ÈÃÏÂ±ê¶ÔÆë±È½ÏºÃÀí½â
+	for (int i = 1; i <= N; i++) {//è®©ä¸‹æ ‡å¯¹é½æ¯”è¾ƒå¥½ç†è§£
 		scanf("%d", &D[i]);
 		sum += D[i];
-		D[i] = sum;//ÊÇ´Ó1µ½i+1µÄ×Ü³¤¶È
+		D[i] = sum;//æ˜¯ä»Ž1åˆ°i+1çš„æ€»é•¿åº¦
 	}
 
 	int M;
 	scanf("%d", &M);
 
 	int Vi, Vj;
-	int clockwise = 0, countercw = 0;//Ë³Ê±ÕëÄæÊ±Õë
+	int clockwise = 0, countercw = 0;//é¡ºæ—¶é’ˆé€†æ—¶é’ˆ
 	for (int i = 0; i < M; i++) {
 		scanf("%d %d", &Vi, &Vj);
-		//shoDist(N, D, Vi, Vj);¿ªÊ¼Ð´ÁË¸öshoDistº¯Êý¼ÆËã£¬µ«ÊÇ×îºóÒ»¸ö²âÊÔµã×ÜÊÇ³¬Ê±£¬ºóÀ´Ñ¡ÔñÁËÊéÉÏµÄËã·¨
+		//shoDist(N, D, Vi, Vj);å¼€å§‹å†™äº†ä¸ªshoDistå‡½æ•°è®¡ç®—ï¼Œä½†æ˜¯æœ€åŽä¸€ä¸ªæµ‹è¯•ç‚¹æ€»æ˜¯è¶…æ—¶ï¼ŒåŽæ¥é€‰æ‹©äº†ä¹¦ä¸Šçš„ç®—æ³•
 		if (Vi > Vj)
 			swap(Vi, Vj);
 		clockwise = D[Vj - 1] - D[Vi - 1];

@@ -10,7 +10,7 @@ long reverse(long fuck, int radix) {
 	while (fuck != 0) {
 		shit[index++] = fuck % radix;
 		fuck /= radix;
-	}//²»ÊìÁ·µÄ»°£¬×îºÃĞ´³öÀ´¿´Ò»ÏÂ...
+	}//ä¸ç†Ÿç»ƒçš„è¯ï¼Œæœ€å¥½å†™å‡ºæ¥çœ‹ä¸€ä¸‹...
 	for (int i = index - 1, product = 1; i >= 0; i--, product *= radix) {
 		fuck += product * shit[i];
 	}
@@ -29,7 +29,7 @@ bool isPrime(long fuck) {
 int main(int argc, char *argv[]) {
 	long prime;
 	int radix;
-	while (scanf("%ld", &prime) && prime > 0) {//scanf·µ»Ø¶ÁÊı¸öÊı»òÕßEOF£¬¶øÖ»ÓĞ0¶ÔÓ¦FALSE£¬ËùÒÔwhileÒ»¶¨²»»áÒòÎªscanfÕâ¸öº¯ÊıÍ£Ö¹Ñ­»·
+	while (scanf("%ld", &prime) && prime > 0) {//scanfè¿”å›è¯»æ•°ä¸ªæ•°æˆ–è€…EOFï¼Œè€Œåªæœ‰0å¯¹åº”FALSEï¼Œæ‰€ä»¥whileä¸€å®šä¸ä¼šå› ä¸ºscanfè¿™ä¸ªå‡½æ•°åœæ­¢å¾ªç¯
 		scanf("%d", &radix);
 		if (isPrime(prime) && isPrime(reverse(prime, radix))) printf("Yes\n");
 		else printf("No\n");
@@ -37,9 +37,9 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//ÎÒ±»Îóµ¼ÁË...ÊäÈëµÄÊı²»Ò»¶¨ÊÇprime£¬²»ÒªÍü¼ÇÅĞ¶ÏÕâ¸ö
-//½øÖÆ×ª»»²»ÊìÁ·£¬Ğ´µ½±¸×¢Àï£¡
-//ÏÂÃæÊÇÒ»¿ªÊ¼µÄĞ´·¨£¬ÊÇÏë¿ÌÒâÁ·Ò»ÏÂ½øÖÆ×ª»»µÄ´úÂë£¬Ã»Ïëµ½×îºóÒ»¸ö²âÊÔµã×ÜÊÇ²»¹ı£¬¾Í»»ÁËÕı³£Ğ´·¨
+//æˆ‘è¢«è¯¯å¯¼äº†...è¾“å…¥çš„æ•°ä¸ä¸€å®šæ˜¯primeï¼Œä¸è¦å¿˜è®°åˆ¤æ–­è¿™ä¸ª
+//è¿›åˆ¶è½¬æ¢ä¸ç†Ÿç»ƒï¼Œå†™åˆ°å¤‡æ³¨é‡Œï¼
+//ä¸‹é¢æ˜¯ä¸€å¼€å§‹çš„å†™æ³•ï¼Œæ˜¯æƒ³åˆ»æ„ç»ƒä¸€ä¸‹è¿›åˆ¶è½¬æ¢çš„ä»£ç ï¼Œæ²¡æƒ³åˆ°æœ€åä¸€ä¸ªæµ‹è¯•ç‚¹æ€»æ˜¯ä¸è¿‡ï¼Œå°±æ¢äº†æ­£å¸¸å†™æ³•
 //#pragma warning(disable: 4996)
 //#include <cmath>
 //#include <cstdio>
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
 //	long long decimal = 0, product = 1;
 //	while (fuck != 0) {
 //		decimal += (fuck % 10) * product;
-//		fuck /= 10;//È¥µô×îµÍÎ»
+//		fuck /= 10;//å»æ‰æœ€ä½ä½
 //		product *= radix;
 //	}
 //	return decimal;
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 //	return true;
 //}
 //
-//int main(long long argc, char *argv[]) {//¸´Ï°Ò»ÏÂcµÄ¶¯Ì¬Êı×éallocÉ¶µÄ
+//int main(long long argc, char *argv[]) {//å¤ä¹ ä¸€ä¸‹cçš„åŠ¨æ€æ•°ç»„allocå•¥çš„
 //	long long prime;
 //	long long radix;
 //	long long fuck = 32;
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
 //		else {
 //			fuck = toRadix(prime, radix);
 //			fuck = reverse(fuck);
-//			fuck = toDecimal(fuck, radix);//°ÑÕâ²½ÂäÏÂÁË...×îºÃÔÚ×öÌâÖ®Ç°Ğ´¸öÊÖ¸å£¬¶øÇÒÕâ¸öÌâ¸ù±¾²»ÓÃĞ´³öÀ´Á½¶Î½øÖÆ×ª»»µÄ´úÂë£¬ÊÇ×Ô¼º¸ø×Ô¼ºÕÒÂé·³ÁË
+//			fuck = toDecimal(fuck, radix);//æŠŠè¿™æ­¥è½ä¸‹äº†...æœ€å¥½åœ¨åšé¢˜ä¹‹å‰å†™ä¸ªæ‰‹ç¨¿ï¼Œè€Œä¸”è¿™ä¸ªé¢˜æ ¹æœ¬ä¸ç”¨å†™å‡ºæ¥ä¸¤æ®µè¿›åˆ¶è½¬æ¢çš„ä»£ç ï¼Œæ˜¯è‡ªå·±ç»™è‡ªå·±æ‰¾éº»çƒ¦äº†
 //										  //printf("%lld\n", fuck);
 //			if (isPrime(fuck))
 //				printf("Yes\n");

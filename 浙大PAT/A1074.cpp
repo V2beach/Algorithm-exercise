@@ -22,9 +22,9 @@ void reverse_util(vector<Node>& nodes, int start, int end) {//[]
 			swap(nodes[j], nodes[j + 1]);
 }
 
-//ÓĞÃ»ÓĞ¿ÉÄÜĞ´Ò»¸öÔ­µØ·´×ªËã·¨£¿
+//æœ‰æ²¡æœ‰å¯èƒ½å†™ä¸€ä¸ªåŸåœ°åè½¬ç®—æ³•ï¼Ÿ
 int main(int argc, char* argv[]) {
-	//¶ÁÊı¾İ->´æ³É¾²Ì¬Á´±í->±éÀúÒ»±é²¢´æÈëvector->°´Ë³Ğò·´×ªÁ´±í->Êä³ö
+	//è¯»æ•°æ®->å­˜æˆé™æ€é“¾è¡¨->éå†ä¸€éå¹¶å­˜å…¥vector->æŒ‰é¡ºåºåè½¬é“¾è¡¨->è¾“å‡º
 	int add_0, N, K;
 	cin >> add_0 >> N >> K;
 
@@ -39,15 +39,15 @@ int main(int argc, char* argv[]) {
 	vector<Node> nodes_valid;
 	int index = add_0;
 	nodes_valid.push_back(nodes[index]);
-	while (nodes[index].next != -1) {//A1052ÎÒÓÃÁËdo whileµÄĞ´·¨
+	while (nodes[index].next != -1) {//A1052æˆ‘ç”¨äº†do whileçš„å†™æ³•
 		index = nodes[index].next;
 		nodes_valid.push_back(nodes[index]);
 	}
 
 	N = nodes_valid.size();
-	if (K > N) K = N;//²âÊÔµã²¢Ã»ÓĞÕâÖÖÇé¿ö
+	if (K > N) K = N;//æµ‹è¯•ç‚¹å¹¶æ²¡æœ‰è¿™ç§æƒ…å†µ
 	int times = 0;//K == 0
-	if (K != 0) times = N / K;//±ÈÈçN6K2, times==3
+	if (K != 0) times = N / K;//æ¯”å¦‚N6K2, times==3
 
 	for (int t = 1; t <= times; t++) {
 		reverse_util(nodes_valid, (t - 1) * K, t * K - 1);
@@ -62,9 +62,9 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//1ºÍ5¼ì²éµã´íÁË£¬Ò»¹²7¸ö¼ì²éµã£¬µÃÁË19·Ö¡£
-//¼ì²éµã1 5´íÒò£¬ÍêÈ«¶Á´íÌâÁË£¬you are supposed to reverse the links of every K elements on L.
-//every!!!every!!!every!!!ÔõÃ´ÕâÃ´·´ÈËÀà°¡£¬»òÕßËµÎÒ¶ÁÓ¢ÎÄÌâÅĞ¶ÏÏİÚåµÄÄÜÁ¦ÔõÃ´ÕâÃ´²î°¡¡£
+//1å’Œ5æ£€æŸ¥ç‚¹é”™äº†ï¼Œä¸€å…±7ä¸ªæ£€æŸ¥ç‚¹ï¼Œå¾—äº†19åˆ†ã€‚
+//æ£€æŸ¥ç‚¹1 5é”™å› ï¼Œå®Œå…¨è¯»é”™é¢˜äº†ï¼Œyou are supposed to reverse the links of every K elements on L.
+//every!!!every!!!every!!!æ€ä¹ˆè¿™ä¹ˆåäººç±»å•Šï¼Œæˆ–è€…è¯´æˆ‘è¯»è‹±æ–‡é¢˜åˆ¤æ–­é™·é˜±çš„èƒ½åŠ›æ€ä¹ˆè¿™ä¹ˆå·®å•Šã€‚
 //00100 6 2
 //00000 4 99999
 //00100 1 12309
@@ -73,6 +73,6 @@ int main(int argc, char* argv[]) {
 //99999 5 68237
 //12309 2 33218
 //(123456, 214365)
-//Ë¼Î¬²»ÊìÁ·£¬ÈÆÁËºÜ¶àÍä£¬Ğ´ÍêµÚÒ»±é¾Í»¨ÁËÒ»¸öĞ¡Ê±£¬
-//ACÁ©Ğ¡Ê±£¬´úÂëÊÇÍêÈ«ÖØĞ´µÄ£¬ÖØĞ´Õâ±éÒ»´Î¾ÍACÖ»»¨ÁËÊ®¼¸·ÖÖÓ£¬
-//ÕâÑù²»ĞĞ°¡£¬PATÒ»¹²¾Í¸øÈı¸öĞ¡Ê±Ê±¼ä
+//æ€ç»´ä¸ç†Ÿç»ƒï¼Œç»•äº†å¾ˆå¤šå¼¯ï¼Œå†™å®Œç¬¬ä¸€éå°±èŠ±äº†ä¸€ä¸ªå°æ—¶ï¼Œ
+//ACä¿©å°æ—¶ï¼Œä»£ç æ˜¯å®Œå…¨é‡å†™çš„ï¼Œé‡å†™è¿™éä¸€æ¬¡å°±ACåªèŠ±äº†åå‡ åˆ†é’Ÿï¼Œ
+//è¿™æ ·ä¸è¡Œå•Šï¼ŒPATä¸€å…±å°±ç»™ä¸‰ä¸ªå°æ—¶æ—¶é—´

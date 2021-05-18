@@ -13,21 +13,21 @@ bool areTheyTheSame(int a[], int b[], int n) {
 	return true;
 }
 
-bool insertionSort(int* &array, int* sorted, int n) {//²åÅÅ¶¼Ğ´²»³ö×îÓÅ½âÁË£¬»ù´¡ĞÔµÄ¶«Î÷Òª¼ÇÀÎ£¬Ö÷ÒªÄÚÈİÕûÀí¸ö±Ê¼Ç
+bool insertionSort(int* &array, int* sorted, int n) {//æ’æ’éƒ½å†™ä¸å‡ºæœ€ä¼˜è§£äº†ï¼ŒåŸºç¡€æ€§çš„ä¸œè¥¿è¦è®°ç‰¢ï¼Œä¸»è¦å†…å®¹æ•´ç†ä¸ªç¬”è®°
 	bool flag = false;
-	for (int i = 1; i < n; i++) {//È·ÊµÊÇ´ÓºóÍùÇ°Ã¶¾Ù±È½ÏºÃ
+	for (int i = 1; i < n; i++) {//ç¡®å®æ˜¯ä»åå¾€å‰æšä¸¾æ¯”è¾ƒå¥½
 		int temp = array[i], j = i;
 		while (j > 0 && temp < array[j - 1]) {
 			array[j--] = array[j - 1];
 		}
 		array[j] = temp;
 		if (flag) return flag;
-		if (areTheyTheSame(array, sorted, n)) flag = true;//ÔÙÅÜÒ»ÂÖ
+		if (areTheyTheSame(array, sorted, n)) flag = true;//å†è·‘ä¸€è½®
 	}
 	return flag;
 }
 
-void merge(int* &array, int l1, int l2, int r1, int r2, int n) {//ÒªĞ´Ô­µØËã·¨...Ö÷ÒªÊÇ²»ÏëÖ±½ÓÓÃsort£¬¾ÍËæ±ãĞ´Ò»¸ö°É
+void merge(int* &array, int l1, int l2, int r1, int r2, int n) {//è¦å†™åŸåœ°ç®—æ³•...ä¸»è¦æ˜¯ä¸æƒ³ç›´æ¥ç”¨sortï¼Œå°±éšä¾¿å†™ä¸€ä¸ªå§
 	int *yarra = new int[n], i = l1, j = r1, index = l1;
 	while (i <= l2 && j <= r2) {
 		if (array[i] < array[j]) yarra[index++] = array[i++];
@@ -41,10 +41,10 @@ void merge(int* &array, int l1, int l2, int r1, int r2, int n) {//ÒªĞ´Ô­µØËã·¨..
 
 bool mergeSort(int* &array, int* sorted, int n) {
 	bool flag = false;
-	for (int step = 2; step / 2 < n; step *= 2) {//stepÊÇÒ»×éÖĞÅÅºÃĞòµÄËùÓĞÔªËØ£¬step / 2ÊÇ×ó°ë»òÓÒ°ë±ß£¬ÕâÀïÎÒÃ»Ñ¡Ôñ<=¶øÊÇstep / 2 < n£¬×Ô¼º¾ÙÒ»¸ö4¸öÊı/5¸öÊıµÄÀı×Ó¾ÍÖªµÀÁË£¬ÔÚÊéÉÏĞ´ÁË
-		for (int i = 0; i < n; i += step) {//Ã¿´ÎÅÅĞòµÄÔªËØ
-			int mid = i + step / 2 - 1;//×ó±ßÇø¼äµÄÔªËØ¸öÊıÓĞstep / 2¸ö
-			if (mid + 1 < n)//ÓÒ±ßÇø¼ä¿ÉÄÜÃ»ÓĞÔªËØÁË£¬±ÈÈç6¸öÔªËØµÄĞòÁĞ£¬Ö»ÄÜµÚÒ»·Ö×é·ÖÈı×é£¬µÚ¶ş´Î·Ö×éÊ±µÚ¶ş×éµÄÓÒ±ßÇø¼äÎª¿ÕÁË
+	for (int step = 2; step / 2 < n; step *= 2) {//stepæ˜¯ä¸€ç»„ä¸­æ’å¥½åºçš„æ‰€æœ‰å…ƒç´ ï¼Œstep / 2æ˜¯å·¦åŠæˆ–å³åŠè¾¹ï¼Œè¿™é‡Œæˆ‘æ²¡é€‰æ‹©<=è€Œæ˜¯step / 2 < nï¼Œè‡ªå·±ä¸¾ä¸€ä¸ª4ä¸ªæ•°/5ä¸ªæ•°çš„ä¾‹å­å°±çŸ¥é“äº†ï¼Œåœ¨ä¹¦ä¸Šå†™äº†
+		for (int i = 0; i < n; i += step) {//æ¯æ¬¡æ’åºçš„å…ƒç´ 
+			int mid = i + step / 2 - 1;//å·¦è¾¹åŒºé—´çš„å…ƒç´ ä¸ªæ•°æœ‰step / 2ä¸ª
+			if (mid + 1 < n)//å³è¾¹åŒºé—´å¯èƒ½æ²¡æœ‰å…ƒç´ äº†ï¼Œæ¯”å¦‚6ä¸ªå…ƒç´ çš„åºåˆ—ï¼Œåªèƒ½ç¬¬ä¸€åˆ†ç»„åˆ†ä¸‰ç»„ï¼Œç¬¬äºŒæ¬¡åˆ†ç»„æ—¶ç¬¬äºŒç»„çš„å³è¾¹åŒºé—´ä¸ºç©ºäº†
 				merge(array, i, mid, mid + 1, min(i + step - 1, n - 1), n);
 		}
 		if (flag) return flag;
@@ -58,7 +58,7 @@ void print(int* array, int n, int type) {
 	if (type == 2) printf("Merge Sort\n");
 	printf("%d", array[0]);
 	for (int i = 1; i < n; i++)
-		printf(" %d", array[i]);//×¢Òâ£¬¿Õ¸ñ²»Ïñ»»ĞĞ·ûÒ»Ñù¿ÉÒÔ±»OJÈİÈÌ
+		printf(" %d", array[i]);//æ³¨æ„ï¼Œç©ºæ ¼ä¸åƒæ¢è¡Œç¬¦ä¸€æ ·å¯ä»¥è¢«OJå®¹å¿
 }
 
 int main(int argc, char *argv[]) {
@@ -78,4 +78,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//Ò»´Î¹ıÁË£¬Ö»ÊÇÅÅĞòµÄĞ´·¨Ì«²»ÊìÁ·ÁË£¬¾¿ÆäÔ­ÒòÊÇÃ»ÓĞÕæÕıÀí½â¡£
+//ä¸€æ¬¡è¿‡äº†ï¼Œåªæ˜¯æ’åºçš„å†™æ³•å¤ªä¸ç†Ÿç»ƒäº†ï¼Œç©¶å…¶åŸå› æ˜¯æ²¡æœ‰çœŸæ­£ç†è§£ã€‚

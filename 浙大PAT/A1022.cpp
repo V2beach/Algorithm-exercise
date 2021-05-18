@@ -6,7 +6,7 @@
 #include <algorithm>
 using namespace std;
 map<string, set<int>> titles, authors, keywords, publishers, years;
-void query(map<string, set<int>>& info, string& type) {//²»¼ÓÒıÓÃ»á³¬Ê±£¬×Ö·û´®¼°mapµÄĞÎ²Î´«µİ½ÏÂı
+void query(map<string, set<int>>& info, string& type) {//ä¸åŠ å¼•ç”¨ä¼šè¶…æ—¶ï¼Œå­—ç¬¦ä¸²åŠmapçš„å½¢å‚ä¼ é€’è¾ƒæ…¢
 	if (info.find(type) == info.end()) cout << "Not Found" << endl;
 	else {
 		set<int>::iterator it;
@@ -16,22 +16,22 @@ void query(map<string, set<int>>& info, string& type) {//²»¼ÓÒıÓÃ»á³¬Ê±£¬×Ö·û´®¼
 }
 int main(int argc, char* argv[]) {
 	int N, M, id;
-	//ios::sync_with_stdio(false);//²»ÄÜËæ±ã¼Ó£¬¼ÓÁË·´¶ø±¨ÔËĞĞ³¬Ê±£¡
+	//ios::sync_with_stdio(false);//ä¸èƒ½éšä¾¿åŠ ï¼ŒåŠ äº†åè€ŒæŠ¥è¿è¡Œè¶…æ—¶ï¼
 	cin >> N;
 	string title, author, keyword, publisher, year;
 	for (int i = 0; i < N; i++) {
 		cin >> id; getchar();//id
-		getline(cin, title);//ÊéÃû
+		getline(cin, title);//ä¹¦å
 		titles[title].insert(id);
-		getline(cin, author);//×÷Õß
+		getline(cin, author);//ä½œè€…
 		authors[author].insert(id);
-		while (cin >> keyword) {//¹Ø¼ü´Ê£¬>>ÖØÔØºó·µ»ØÖµÔÚÃ»ÓĞ¶ÁÈë´íÎóÊ±·µ»Ø·ÇÁãÖµ
+		while (cin >> keyword) {//å…³é”®è¯ï¼Œ>>é‡è½½åè¿”å›å€¼åœ¨æ²¡æœ‰è¯»å…¥é”™è¯¯æ—¶è¿”å›éé›¶å€¼
 			keywords[keyword].insert(id);
-			if (getchar() == '\n') break;//¶ÁÈëÒ»¸ö¿Õ¸ñ£¬ÕâÑù´¦ÀíºÜÆ¯ÁÁ
+			if (getchar() == '\n') break;//è¯»å…¥ä¸€ä¸ªç©ºæ ¼ï¼Œè¿™æ ·å¤„ç†å¾ˆæ¼‚äº®
 		}
-		getline(cin, publisher);//³ö°æÉç
+		getline(cin, publisher);//å‡ºç‰ˆç¤¾
 		publishers[publisher].insert(id);
-		getline(cin, year);//Äê·İ
+		getline(cin, year);//å¹´ä»½
 		years[year].insert(id);
 	}
 	cin >> M;
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 	string type;
 	for (int i = 0; i < M; i++) {
 		scanf("%d: ", &typen);
-		getline(cin, type);//Ñ§Ï°Ò»ÏÂÕâ¸ö¶ÁÈë
+		getline(cin, type);//å­¦ä¹ ä¸€ä¸‹è¿™ä¸ªè¯»å…¥
 		cout << typen << ": " << type << endl;
 		if (typen == 1) query(titles, type);
 		else if (typen == 2) query(authors, type);
@@ -50,16 +50,16 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//´óĞÍÄ£Äâ£¬¾­µäÍ¼Êé¹ÜÀí£¬³å£¬Ò»Ğ¡Ê±ÄÚĞ´Ò»¸öÍ¼Êé¹ÜÀí´úÂë¡£
-//ÓÃvectorĞ´µÄÈ«²¿³¬Ê±£¬setÒ²²»ĞĞ£¬±¾µØÅÜµÃÍ¨£¬ÉÏÁËOJ¾ÍÊÇÅÜ²»Í¨£¬
-//Ë¼ÏëÊÇ¸úÇçÉñ»ù±¾Ò»ÑùµÄ£¬µ«ÎÒÑ§Ï°ÁËÒ»ÏÂËûµÄĞ´·¨£¬ËûĞ´µÃ·Ç³£Æ¯ÁÁ£¬
-//ÎÒÓĞÕâÖÖ³éÏó³Équeryº¯ÊıµÄÏë·¨£¬µ«ÊÇ²¢²»ÄÜ·Ç³£Ë³³©µÄÊµÏÖ£¬
-//mapµÄÊ¹ÓÃºÍĞ´´úÂëµÄÁé»î³Ì¶ÈÒ²¶¼¸ßÎÒÒ»³ï£¬Ñ§Ï°Ò»¸öÏÈ½øË¼Ïë¡£
-//Ü³£¬ÎÒ×îºó·¢ÏÖ£¬ÊÇÒòÎªÓÃÁËios::sync_with_stdio(false)£¬±¾À´¾ÍĞ´¶ÔÁË£¬
-//Ï°¹ßĞÔµØ¼ÓÉÏÁË£¬ÕÒÁËÕûÕûÒ»¸öÏÂÎçbug£¬ÉÏÎçÒ»¸öĞ¡Ê±¾ÍĞ´ÍêÁË£¬Ò»ÌìÓÖ°×Ï¹£¬
-//ËûÂèµÄ±¸×¢Ò»ÏÂ£¬ios::sync_with_stdio(false)£¬»¹ÓĞ×¢Òâ¸ñÊ½printf(%07d)¡£
-//ÕûÀíÒ»ÏÂios::sync_with_stdio(false)¾ßÌåÈçºÎÈ¡ÏûcinºÍscanfÍ¬²½£¬
-//²¢ÇÒÍêÕûµØÕûÀí¶ÁĞ´Êı¾İµÄËùÓĞÖªÊ¶£¬C++µÄÎÄ¼ş¶ÁĞ´£¬±ê×¼¶ÁĞ´£¬ºÍCµÄÇø±ğµÈ¡£
+//å¤§å‹æ¨¡æ‹Ÿï¼Œç»å…¸å›¾ä¹¦ç®¡ç†ï¼Œå†²ï¼Œä¸€å°æ—¶å†…å†™ä¸€ä¸ªå›¾ä¹¦ç®¡ç†ä»£ç ã€‚
+//ç”¨vectorå†™çš„å…¨éƒ¨è¶…æ—¶ï¼Œsetä¹Ÿä¸è¡Œï¼Œæœ¬åœ°è·‘å¾—é€šï¼Œä¸Šäº†OJå°±æ˜¯è·‘ä¸é€šï¼Œ
+//æ€æƒ³æ˜¯è·Ÿæ™´ç¥åŸºæœ¬ä¸€æ ·çš„ï¼Œä½†æˆ‘å­¦ä¹ äº†ä¸€ä¸‹ä»–çš„å†™æ³•ï¼Œä»–å†™å¾—éå¸¸æ¼‚äº®ï¼Œ
+//æˆ‘æœ‰è¿™ç§æŠ½è±¡æˆqueryå‡½æ•°çš„æƒ³æ³•ï¼Œä½†æ˜¯å¹¶ä¸èƒ½éå¸¸é¡ºç•…çš„å®ç°ï¼Œ
+//mapçš„ä½¿ç”¨å’Œå†™ä»£ç çš„çµæ´»ç¨‹åº¦ä¹Ÿéƒ½é«˜æˆ‘ä¸€ç­¹ï¼Œå­¦ä¹ ä¸€ä¸ªå…ˆè¿›æ€æƒ³ã€‚
+//è‰¹ï¼Œæˆ‘æœ€åå‘ç°ï¼Œæ˜¯å› ä¸ºç”¨äº†ios::sync_with_stdio(false)ï¼Œæœ¬æ¥å°±å†™å¯¹äº†ï¼Œ
+//ä¹ æƒ¯æ€§åœ°åŠ ä¸Šäº†ï¼Œæ‰¾äº†æ•´æ•´ä¸€ä¸ªä¸‹åˆbugï¼Œä¸Šåˆä¸€ä¸ªå°æ—¶å°±å†™å®Œäº†ï¼Œä¸€å¤©åˆç™½çï¼Œ
+//ä»–å¦ˆçš„å¤‡æ³¨ä¸€ä¸‹ï¼Œios::sync_with_stdio(false)ï¼Œè¿˜æœ‰æ³¨æ„æ ¼å¼printf(%07d)ã€‚
+//æ•´ç†ä¸€ä¸‹ios::sync_with_stdio(false)å…·ä½“å¦‚ä½•å–æ¶ˆcinå’ŒscanfåŒæ­¥ï¼Œ
+//å¹¶ä¸”å®Œæ•´åœ°æ•´ç†è¯»å†™æ•°æ®çš„æ‰€æœ‰çŸ¥è¯†ï¼ŒC++çš„æ–‡ä»¶è¯»å†™ï¼Œæ ‡å‡†è¯»å†™ï¼Œå’ŒCçš„åŒºåˆ«ç­‰ã€‚
 //#pragma warning(disable: 4996)
 //#include <iostream>
 //#include <set>
@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
 //		cin >> id;
 //		getchar();
 //
-//		//ÊéÃû
+//		//ä¹¦å
 //		getline(cin, title);
 //		it = titles.find(title);
 //		if (it == titles.end()) {
@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
 //			it->second.insert(id);
 //		}
 //
-//		//×÷Õß
+//		//ä½œè€…
 //		getline(cin, author);
 //		it = authors.find(author);
 //		if (it == authors.end()) {
@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 //			it->second.insert(id);
 //		}
 //
-//		//¹Ø¼ü´Ê
+//		//å…³é”®è¯
 //		getline(cin, keyword);
 //		int prev = 0;
 //		string substring;
@@ -130,7 +130,7 @@ int main(int argc, char* argv[]) {
 //				prev = j + 1;
 //			}
 //		}
-//		substring = keyword.substr(prev, keyword.size() - prev);//×îºóÒ»¸ö£¬Í¼Ê¡ÊÂ¾ÍÖ±½ÓÄÃ³öÀ´ÁË
+//		substring = keyword.substr(prev, keyword.size() - prev);//æœ€åä¸€ä¸ªï¼Œå›¾çœäº‹å°±ç›´æ¥æ‹¿å‡ºæ¥äº†
 //		it = keywords.find(substring);
 //		if (it == keywords.end()) {
 //			set<long> ids;
@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
 //			it->second.insert(id);
 //		}
 //
-//		//³ö°æÉç
+//		//å‡ºç‰ˆç¤¾
 //		getline(cin, publisher);
 //		it = publishers.find(publisher);
 //		if (it == publishers.end()) {

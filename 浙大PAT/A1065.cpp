@@ -10,12 +10,12 @@ int main(int argc, char *argv[]) {
 
 	for (int i = 1; i <= T; i++) {
 		long long a, b, c;
-		scanf("%lld %lld %lld", &a, &b, &c);//Òç³ö£¬Á½¸öÕıÊı»òÕßÁ½¸ö¸ºÊı
-		long long sum = a + b;//×¢ÒâÕâÀï£¬Èç¹ûÃ»ÓĞsum£¬Ö±½ÓÓÃa + bµÄ»°²âÊÔµã²»Í¨¹ı£¬Ææ¹ÖÁË
+		scanf("%lld %lld %lld", &a, &b, &c);//æº¢å‡ºï¼Œä¸¤ä¸ªæ­£æ•°æˆ–è€…ä¸¤ä¸ªè´Ÿæ•°
+		long long sum = a + b;//æ³¨æ„è¿™é‡Œï¼Œå¦‚æœæ²¡æœ‰sumï¼Œç›´æ¥ç”¨a + bçš„è¯æµ‹è¯•ç‚¹ä¸é€šè¿‡ï¼Œå¥‡æ€ªäº†
 		if (a > 0 && b > 0 && sum < 0) {
 			printf("Case #%d: true", i);
 		}
-		else if (a < 0 && b < 0 && sum >= 0) {//¿ÉÄÜµÈÓÚ£¬ÒªËãÒ»ËãÒç³öÇé¿ö
+		else if (a < 0 && b < 0 && sum >= 0) {//å¯èƒ½ç­‰äºï¼Œè¦ç®—ä¸€ç®—æº¢å‡ºæƒ…å†µ
 			printf("Case #%d: false", i);
 		}
 		else {

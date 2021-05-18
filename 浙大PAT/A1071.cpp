@@ -20,7 +20,7 @@ bool isAlphanumeric(char &character) {
 int main(int argc, char* argv[]) {
 	ios::sync_with_stdio(false);
 	string testcase;
-	getline(cin, testcase);//×¢Òâ¶ÁÒ»ĞĞÒªÓÃgetline£¬ÀÏÊÇÍü¼Ç
+	getline(cin, testcase);//æ³¨æ„è¯»ä¸€è¡Œè¦ç”¨getlineï¼Œè€æ˜¯å¿˜è®°
 	map<string, long> words;
 	map<string, long>::iterator it;
 	string substring;
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 	for (; index < testcase.size(); index++) {
 		if (isAlphanumeric(testcase[index])) {
 			prev = index;
-			while (isAlphanumeric(testcase[++index]));//ÕÒµ½Ö®ºóµÄµÚÒ»¸önon-alphanumeric
+			while (isAlphanumeric(testcase[++index]));//æ‰¾åˆ°ä¹‹åçš„ç¬¬ä¸€ä¸ªnon-alphanumeric
 			substring = testcase.substr(prev, index - prev);
 			it = words.find(substring);
 			if (it == words.end())
@@ -49,4 +49,4 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//¹âËÙÍê³É
+//å…‰é€Ÿå®Œæˆ

@@ -15,7 +15,7 @@ int charToInteger(char c) {
 	else return 36;
 }
 
-int main(int argc, char *argv[]) {//Ë¼Â·£¬²Î¿¼ÊéÉÏµÄ°ì·¨£¬26¸ö×ÖÄ¸ºÍ10¸öÊı×Ö¼ÓÒ»¸ö¿Õ¸ñ£¬×Ö·û¼¯Ò»¹²37¸ö×Ö·û
+int main(int argc, char *argv[]) {//æ€è·¯ï¼Œå‚è€ƒä¹¦ä¸Šçš„åŠæ³•ï¼Œ26ä¸ªå­—æ¯å’Œ10ä¸ªæ•°å­—åŠ ä¸€ä¸ªç©ºæ ¼ï¼Œå­—ç¬¦é›†ä¸€å…±37ä¸ªå­—ç¬¦
 	bool hashTable[37];
 	memset(hashTable, false, 37 * sizeof(bool));
 	char str1[81], str2[81];

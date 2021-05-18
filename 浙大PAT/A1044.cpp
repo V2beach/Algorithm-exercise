@@ -11,7 +11,7 @@ long long binarySearch(long long* array, vector<long long*> &answer, long long l
 	diamonds[0] = left;
 	while (left < right) {
 		mid = (left + right) / 2;
-		if (diamonds[0] == 0 && array[mid] >= value) right = mid;//·ÀÖ¹Ô½½ç
+		if (diamonds[0] == 0 && array[mid] >= value) right = mid;//é˜²æ­¢è¶Šç•Œ
 		else if (array[mid] - array[diamonds[0] - 1] >= value) right = mid;
 		else left = mid + 1;
 	}
@@ -34,9 +34,9 @@ int main(int argc, char *argv[]) {
 	}
 	vector<long long*> answer;
 	long long *diff = new long long[N];
-	long long minDiff = M;//×îĞ¡µÄ²îÖµ²»»á´ó¹ıËùĞè½ğ¶î
+	long long minDiff = M;//æœ€å°çš„å·®å€¼ä¸ä¼šå¤§è¿‡æ‰€éœ€é‡‘é¢
 	for (long long i = 0; i < N; i++) {
-		diff[i] = binarySearch(diamonds, answer, i, N - 1, M);//Èç¹ûÃ»ÓĞ¸ÕºÃÏàµÈµÄ¾Í´æµ½µÚÒ»¸ö´óÓÚËùĞè½ğ¶îµÄÎ»ÖÃ£¬¼ÇÂ¼Ã¿¸öĞòÁĞºÍ½ğ¶îµÄ²îÖµ£¬¶¼Ã»ÓĞÔò¿Õ
+		diff[i] = binarySearch(diamonds, answer, i, N - 1, M);//å¦‚æœæ²¡æœ‰åˆšå¥½ç›¸ç­‰çš„å°±å­˜åˆ°ç¬¬ä¸€ä¸ªå¤§äºæ‰€éœ€é‡‘é¢çš„ä½ç½®ï¼Œè®°å½•æ¯ä¸ªåºåˆ—å’Œé‡‘é¢çš„å·®å€¼ï¼Œéƒ½æ²¡æœ‰åˆ™ç©º
 		if (diff[i] >= 0 && minDiff > diff[i]) minDiff = diff[i];
 	}
 	for (long long i = 0; i < N; i++)
@@ -45,6 +45,6 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//ÕâÆª´úÂëÒªÖØĞÂ¶Á£¬»¹Ã»ÓĞ¿´ÊéÉÏµÄÌâ½â¡£
-//Ëã·¨±Ê¼ÇÉÏÃæµÄË¼Â··Ç³£¼òµ¥µ«ÊÇ·Ç³£Æ¯ÁÁ£¬Ó¦¸ÃÑ§Ï°ÕâÖÖË¼Â·£¬ºÜ°ô
-//¼´£¬´Ó5µ½7µÄºÍÆäÊµ¾ÍÊÇsum[7] - sum[4]£¬ËùÒÔÖ»ĞèÒªÇóÒ»¸öÀÛ¼ÓÊı×é
+//è¿™ç¯‡ä»£ç è¦é‡æ–°è¯»ï¼Œè¿˜æ²¡æœ‰çœ‹ä¹¦ä¸Šçš„é¢˜è§£ã€‚
+//ç®—æ³•ç¬”è®°ä¸Šé¢çš„æ€è·¯éå¸¸ç®€å•ä½†æ˜¯éå¸¸æ¼‚äº®ï¼Œåº”è¯¥å­¦ä¹ è¿™ç§æ€è·¯ï¼Œå¾ˆæ£’
+//å³ï¼Œä»5åˆ°7çš„å’Œå…¶å®å°±æ˜¯sum[7] - sum[4]ï¼Œæ‰€ä»¥åªéœ€è¦æ±‚ä¸€ä¸ªç´¯åŠ æ•°ç»„

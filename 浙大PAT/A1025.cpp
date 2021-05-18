@@ -20,7 +20,7 @@ struct Testee {
 	int localRank;
 };
 
-bool cmp(Testee a, Testee b) {//ÏëÅÅÐòÈ«²¿ÔªËØ²»ÄÜÓÃ¶þÎ¬Êý×é
+bool cmp(Testee a, Testee b) {//æƒ³æŽ’åºå…¨éƒ¨å…ƒç´ ä¸èƒ½ç”¨äºŒç»´æ•°ç»„
 	if (a.score != b.score) return a.score > b.score;
 	else return b.id > a.id;
 }
@@ -54,10 +54,10 @@ int main(int argc, char *argv[]) {
 
 	printf("%d", testees.size());
 	for (int i = 0; i < testees.size(); i++)
-		printf("\n%013lld %d %d %d", testees[i].id, testees[i].finalRank, testees[i].location, testees[i].localRank);//ÕâÀïÐèÒª013£¬ÒòÎªÈç¹ûÊÇ0¿ªÍ·µÄ»°³¤ÕûÐÍ»á½«0Ê¡µô£¬ÓÃstringÓÖ»á³¬ÄÚ´æ
+		printf("\n%013lld %d %d %d", testees[i].id, testees[i].finalRank, testees[i].location, testees[i].localRank);//è¿™é‡Œéœ€è¦013ï¼Œå› ä¸ºå¦‚æžœæ˜¯0å¼€å¤´çš„è¯é•¿æ•´åž‹ä¼šå°†0çœæŽ‰ï¼Œç”¨stringåˆä¼šè¶…å†…å­˜
 
 	system("pause");
 	return 0;
 }
-//ÄÚ´æ³¬ÏÞ£¿ÎÒÂúÁ³ÎÊºÅ£¬ºóÀ´·¢ÏÖÊÇstringµÄÎÊÌâ£¬Ã»Ïëµ½
-//ÄÇÆäÊµÒ²Ã»±ØÒªÓÃcin/coutÁË£¬±¾À´¾ÍÊÇÎªÁËstring²ÅÓÃµÄ
+//å†…å­˜è¶…é™ï¼Ÿæˆ‘æ»¡è„¸é—®å·ï¼ŒåŽæ¥å‘çŽ°æ˜¯stringçš„é—®é¢˜ï¼Œæ²¡æƒ³åˆ°
+//é‚£å…¶å®žä¹Ÿæ²¡å¿…è¦ç”¨cin/coutäº†ï¼Œæœ¬æ¥å°±æ˜¯ä¸ºäº†stringæ‰ç”¨çš„

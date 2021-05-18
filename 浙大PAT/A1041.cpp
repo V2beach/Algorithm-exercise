@@ -4,13 +4,13 @@
 
 using namespace std;
 
-//Èç¹ûÖ±½ÓÓÃmapÄØ£¿
+//å¦‚æœç›´æ¥ç”¨mapå‘¢ï¼Ÿ
 int main(int argc, char *argv[]) {
 	int N;
 	scanf("%d", &N);
-	int hashTable[10001];//³ıÁËÒ»¸ö¹şÏ£±í¼ÇÂ¼Êı×ÖµÄ³öÏÖ´ÎÊıÖ®Íâ
+	int hashTable[10001];//é™¤äº†ä¸€ä¸ªå“ˆå¸Œè¡¨è®°å½•æ•°å­—çš„å‡ºç°æ¬¡æ•°ä¹‹å¤–
 	memset(hashTable, 0, 10001 * sizeof(int));
-	int numbers[100001];//ĞèÒªÒ»¸öÊı×é¼ÇÂ¼·Ö±ğ³öÏÖµÄÊÇÊ²Ã´Êı×Ö£¬ÕâÑù±éÀúÈ·Êµ±È½Ï¿ì
+	int numbers[100001];//éœ€è¦ä¸€ä¸ªæ•°ç»„è®°å½•åˆ†åˆ«å‡ºç°çš„æ˜¯ä»€ä¹ˆæ•°å­—ï¼Œè¿™æ ·éå†ç¡®å®æ¯”è¾ƒå¿«
 	for (int i = 0; i < N; i++) {
 		scanf("%d", &numbers[i]);
 		hashTable[numbers[i]]++;

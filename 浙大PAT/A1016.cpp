@@ -8,13 +8,13 @@
 using namespace std;
 
 struct Record {
-	char customer[21], type[9];//on-lineºÍoff-lineÒªÅä¶Ô£¬ÆäÊµ¾ÍÊÇ½Óµç»°/¹Òµç»°£¬Ó¢ÎÄË®Æ½¿°ÓÇ...
+	char customer[21], type[9];//on-lineå’Œoff-lineè¦é…å¯¹ï¼Œå…¶å®å°±æ˜¯æ¥ç”µè¯/æŒ‚ç”µè¯ï¼Œè‹±æ–‡æ°´å¹³å ªå¿§...
 	int month, day, hour, minute;
 };
 
 bool cmp(Record a, Record b) {
 	int c = strcmp(a.customer, b.customer);
-	if (c != 0) return c < 0;//×ÖµäĞò´ÓĞ¡µ½´ó£¬²»ÄÜÖ±½Ó·µ»ØintegerÖµ
+	if (c != 0) return c < 0;//å­—å…¸åºä»å°åˆ°å¤§ï¼Œä¸èƒ½ç›´æ¥è¿”å›integerå€¼
 	else if (a.month != b.month) return a.month < b.month;
 	else if (a.day != b.day) return a.day < b.day;
 	else if (a.hour != b.hour) return a.hour < b.hour;
@@ -22,7 +22,7 @@ bool cmp(Record a, Record b) {
 	return strcmp(a.type, b.type) > 0;
 }
 
-int computeCharge(Record a, Record b, int rate[25]) {//°´ÊéÉÏÄÇÖÖÖğ·ÖÖÓ¼ÓÌ«ÂıÁË£¬×¼È·ÅĞ¶ÏÇé¿öÖ®ºóÖ±½Ó³Ë±È½ÏºÃ°É£¬µ«ÊÇÖğ·ÖÖÓ¼ÓÈ·Êµ¼òµ¥£¬Èç¹ûÎÒÔçÓÃÄÇÖÖ·½·¨µÄ»°Ôç¾ÍĞ´ÍêÁË£¬ÔÚ¿¼ÊÔ»ò±ÈÈüµÄÊ±ºò¾Í¸ÃÑ¡¼òµ¥ÇÒºÄÊ±²¢²»²îÌ«¶àµÄËã·¨£¡
+int computeCharge(Record a, Record b, int rate[25]) {//æŒ‰ä¹¦ä¸Šé‚£ç§é€åˆ†é’ŸåŠ å¤ªæ…¢äº†ï¼Œå‡†ç¡®åˆ¤æ–­æƒ…å†µä¹‹åç›´æ¥ä¹˜æ¯”è¾ƒå¥½å§ï¼Œä½†æ˜¯é€åˆ†é’ŸåŠ ç¡®å®ç®€å•ï¼Œå¦‚æœæˆ‘æ—©ç”¨é‚£ç§æ–¹æ³•çš„è¯æ—©å°±å†™å®Œäº†ï¼Œåœ¨è€ƒè¯•æˆ–æ¯”èµ›çš„æ—¶å€™å°±è¯¥é€‰ç®€å•ä¸”è€—æ—¶å¹¶ä¸å·®å¤ªå¤šçš„ç®—æ³•ï¼
 	int cents = 0;
 	if (a.hour == b.hour)
 		cents = rate[a.hour] * (b.minute - a.minute);
@@ -33,8 +33,8 @@ int computeCharge(Record a, Record b, int rate[25]) {//°´ÊéÉÏÄÇÖÖÖğ·ÖÖÓ¼ÓÌ«ÂıÁË£
 		for (int i = a.hour + 1; i < b.hour; i++)
 			cents += rate[i] * 60;
 	}
-	if (a.day != b.day) {//²»ÊÇÔÚÍ¬Ò»ÌìÀï
-		if (a.hour < b.hour || a.hour == b.hour && a.minute < b.minute) {//bµÄÊ±¼äÔÚÊıÖµÉÏ±Èa´ó
+	if (a.day != b.day) {//ä¸æ˜¯åœ¨åŒä¸€å¤©é‡Œ
+		if (a.hour < b.hour || a.hour == b.hour && a.minute < b.minute) {//bçš„æ—¶é—´åœ¨æ•°å€¼ä¸Šæ¯”aå¤§
 			cents += (b.day - a.day) * rate[24] * 60;
 		}
 		else {
@@ -64,28 +64,28 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < N; i++)
 		scanf("%s %d:%d:%d:%d %s", records[i].customer, &records[i].month, &records[i].day, &records[i].hour, &records[i].minute, records[i].type);
 	sort(records, records + N, cmp);
-	bool isValid = true;//±ğÒ»ÉÏÀ´¾ÍÏëÕÒ×îÓÅ½â
+	bool isValid = true;//åˆ«ä¸€ä¸Šæ¥å°±æƒ³æ‰¾æœ€ä¼˜è§£
 	int previous = 0;
 	vector<Record> validRecords;
 	char *name = records[0].customer;
 	for (int i = 0; i < N; i++) {
 		if (strcmp(records[i].type, "on-line") == 0) {
-			if (isValid) {//ÓĞĞ§µÄÍ¨»°¼ÇÂ¼Ö®ºó£¬¶Áµ½onlineÊÇÕı³£µÄ
+			if (isValid) {//æœ‰æ•ˆçš„é€šè¯è®°å½•ä¹‹åï¼Œè¯»åˆ°onlineæ˜¯æ­£å¸¸çš„
 				isValid = false;
 				previous = i;
 			}
-			else//½Óµç»°¼ÇÂ¼ºó¸úÁËonline£¬ÓÎ±êÖ¸µ½ºóÕß
+			else//æ¥ç”µè¯è®°å½•åè·Ÿäº†onlineï¼Œæ¸¸æ ‡æŒ‡åˆ°åè€…
 				previous = i;
 		}
 		else {
-			if (isValid);//ÓĞĞ§µÄÍ¨»°¼ÇÂ¼Ö®ºó¸úÁËoffline£¬´íÎóµÄ
-			else {//½Óµç»°¼ÇÂ¼Ö®ºó£¬¶Áµ½offline¹¹³ÉÒ»ÌõÓĞĞ§Í¨»°¼ÇÂ¼
+			if (isValid);//æœ‰æ•ˆçš„é€šè¯è®°å½•ä¹‹åè·Ÿäº†offlineï¼Œé”™è¯¯çš„
+			else {//æ¥ç”µè¯è®°å½•ä¹‹åï¼Œè¯»åˆ°offlineæ„æˆä¸€æ¡æœ‰æ•ˆé€šè¯è®°å½•
 				isValid = true;
 				validRecords.push_back(records[previous]);
 				validRecords.push_back(records[i]);
 			}
 		}
-		//×î¸ßĞ§µÄ¸Äbug°ì·¨»¹ÊÇÖ±½Ó´òÓ¡±äÁ¿£¬µ÷ÊÔ±ÈÕâÑùÂı
+		//æœ€é«˜æ•ˆçš„æ”¹bugåŠæ³•è¿˜æ˜¯ç›´æ¥æ‰“å°å˜é‡ï¼Œè°ƒè¯•æ¯”è¿™æ ·æ…¢
 		//printf("\n");
 		//for (int i = 0; i < N; i++)
 		//	printf("%s %d:%d:%d:%d %s\n", records[i].customer, records[i].month, records[i].day, records[i].hour, records[i].minute, records[i].type);
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 			if (strcmp(name, records[i + 1].customer) != 0 || i == N - 1) {
 				isValid = true;
 				name = records[i + 1].customer;
-				if (validRecords.size() == 0)//Í¨¹ıÊéÉÏµÄ²âÊÔµã£¬·¢ÏÖÁËÖÂÃüÂ©¶´£¬Ì«´ÀÁË¡£
+				if (validRecords.size() == 0)//é€šè¿‡ä¹¦ä¸Šçš„æµ‹è¯•ç‚¹ï¼Œå‘ç°äº†è‡´å‘½æ¼æ´ï¼Œå¤ªè ¢äº†ã€‚
 					continue;
 				int cent = 0;
 				int cents = 0;
@@ -119,10 +119,10 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 /*
-ÎÒ»¨ÁËÈı¸öĞ¡Ê±£¬ÖÕÓÚÕÒµ½ÁËÎÊÌâËùÔÚ£¬ÎÒÄ¬ÈÏÁËb.timeÔÚÊıÖµÉÏÒ»¶¨´óÓÚa.time£¬Èç´ËÏÔ¶øÒ×¼ûµÄ´íÎó£¡ÊµÔÚÊÇÌ«´ÀÁË£¬
-Õâ¸öÌâ±©Â¶³öºÜ¶àÎÊÌâ£¬ÅĞ0·ÖÊ±ÎÒµÚÒ»Ê±¼äÏëµÄÊÇPATµÄOJÏµÍ³ÓĞÎÊÌâ£¬Ò»ÊÇÒòÎªÌ«×ÔĞÅ£¬¶şÊÇÒòÎªÌ«ÀÁ¶è£¬´ÓÍâ²¿Ñ°ÕÒÎÊÌâ¾Í±ÜÃâÁË×Ô¼ºĞŞÕıbug¡£
-½ÌÑµ¡ª¡ª²»ÒªËæ±ãÖÊÒÉOJºÍIDE£¬ÕâÊÇºÁÎŞµÀÀíÇÒ·Ç³£²»×¨ÒµµÄĞĞÎª£¬ÕâµÀÌâ»á°´Áø‹SËıÃÇµÄ¾«¼òµÄ×ö·¨ÖØĞÂ×öÒ»±é¡£
-²âÊÔµã£¬ÔÚ×öÕâÖÖOJµÄÊ±ºò£¬±àÊı¾İ×öºÚºĞ²âÊÔ£¬¿ìËÙÖØ¸´¶Á´úÂë×ö°×ºĞ²âÊÔ¶¼ÊÇ·Ç³£ÖØÒªµÄÄÜÁ¦¡£
+æˆ‘èŠ±äº†ä¸‰ä¸ªå°æ—¶ï¼Œç»ˆäºæ‰¾åˆ°äº†é—®é¢˜æ‰€åœ¨ï¼Œæˆ‘é»˜è®¤äº†b.timeåœ¨æ•°å€¼ä¸Šä¸€å®šå¤§äºa.timeï¼Œå¦‚æ­¤æ˜¾è€Œæ˜“è§çš„é”™è¯¯ï¼å®åœ¨æ˜¯å¤ªè ¢äº†ï¼Œ
+è¿™ä¸ªé¢˜æš´éœ²å‡ºå¾ˆå¤šé—®é¢˜ï¼Œåˆ¤0åˆ†æ—¶æˆ‘ç¬¬ä¸€æ—¶é—´æƒ³çš„æ˜¯PATçš„OJç³»ç»Ÿæœ‰é—®é¢˜ï¼Œä¸€æ˜¯å› ä¸ºå¤ªè‡ªä¿¡ï¼ŒäºŒæ˜¯å› ä¸ºå¤ªæ‡’æƒ°ï¼Œä»å¤–éƒ¨å¯»æ‰¾é—®é¢˜å°±é¿å…äº†è‡ªå·±ä¿®æ­£bugã€‚
+æ•™è®­â€”â€”ä¸è¦éšä¾¿è´¨ç–‘OJå’ŒIDEï¼Œè¿™æ˜¯æ¯«æ— é“ç†ä¸”éå¸¸ä¸ä¸“ä¸šçš„è¡Œä¸ºï¼Œè¿™é“é¢˜ä¼šæŒ‰æŸ³å©¼å¥¹ä»¬çš„ç²¾ç®€çš„åšæ³•é‡æ–°åšä¸€éã€‚
+æµ‹è¯•ç‚¹ï¼Œåœ¨åšè¿™ç§OJçš„æ—¶å€™ï¼Œç¼–æ•°æ®åšé»‘ç›’æµ‹è¯•ï¼Œå¿«é€Ÿé‡å¤è¯»ä»£ç åšç™½ç›’æµ‹è¯•éƒ½æ˜¯éå¸¸é‡è¦çš„èƒ½åŠ›ã€‚
 10 10 10 10 10 10 20 20 20 15 15 15 15 15 15 15 20 30 20 15 15 10 10 10
 5
 aaa 01:01:01:03 on-line

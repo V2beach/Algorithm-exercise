@@ -11,7 +11,7 @@ long long toDecimal(char N[11], int radix) {
 	//char digits[11];
 	//sprintf(digits, "%lld", N);
 	long long decimal = 0;
-	for (long long i = strlen(N) - 1, product = 1; i >= 0; i--, product *= radix) {//product³Ë»ı
+	for (long long i = strlen(N) - 1, product = 1; i >= 0; i--, product *= radix) {//productä¹˜ç§¯
 		if (N[i] >= '0' && N[i] <= '9')
 			decimal += (N[i] - '0') * product;
 		else if (N[i] >= 'a' && N[i] <= 'z')
@@ -20,14 +20,14 @@ long long toDecimal(char N[11], int radix) {
 	return decimal;
 }
 
-long long binarySearch(long long left, long long right, long long value, char N[11]) {//ÕÒµ½µÚÒ»¸ö·ûºÏvalueµÄÎ»ÖÃ
+long long binarySearch(long long left, long long right, long long value, char N[11]) {//æ‰¾åˆ°ç¬¬ä¸€ä¸ªç¬¦åˆvalueçš„ä½ç½®
 	long long mid;
 	long long decimal;
-	while (left <= right) {//ÕâÒ»¶Î´úÂëµÄ¸÷ÖÖĞÎÊ½ÕûÀíµ½±Ê¼ÇÀï
+	while (left <= right) {//è¿™ä¸€æ®µä»£ç çš„å„ç§å½¢å¼æ•´ç†åˆ°ç¬”è®°é‡Œ
 		mid = (left + right) / 2;
 		decimal = toDecimal(N, mid);
 		if (decimal == value) return mid;
-		else if (decimal > value || decimal < 0) right = mid - 1;//Èç¹ûÊÇµİ¼õÖ±½Ó°Ñ>¸Ä³É<£¬¼Ó<0ÅĞ¶ÏÒç³ö
+		else if (decimal > value || decimal < 0) right = mid - 1;//å¦‚æœæ˜¯é€’å‡ç›´æ¥æŠŠ>æ”¹æˆ<ï¼ŒåŠ <0åˆ¤æ–­æº¢å‡º
 		else left = mid + 1;
 	}
 	return -1;
@@ -36,12 +36,12 @@ long long binarySearch(long long left, long long right, long long value, char N[
 int main(int argc, char *argv[]) {
 	char N[3][11];
 	int tag, radix;
-	long long Nn[3];//Ê®½øÖÆ
+	long long Nn[3];//åè¿›åˆ¶
 	scanf("%s %s %d %d", N[1], N[2], &tag, &radix);
 	if (strcmp(N[1], N[2]) == 0) printf("%d", radix);
 	else {
 		Nn[tag] = toDecimal(N[tag], radix);
-		long long nin = 0, nax;//×îĞ¡µÄÊıÎ»£¬N[3 - tag]µÄ×îĞ¡½øÖÆÊÇÕâ¸ö×îĞ¡ÊıÎ»¼ÓÒ»
+		long long nin = 0, nax;//æœ€å°çš„æ•°ä½ï¼ŒN[3 - tag]çš„æœ€å°è¿›åˆ¶æ˜¯è¿™ä¸ªæœ€å°æ•°ä½åŠ ä¸€
 		for (int i = 0; i < strlen(N[3 - tag]); i++)
 			if (N[3 - tag][i] >= 'a')
 				if (nin < N[3 - tag][i] - 'a' + 10)
@@ -58,8 +58,8 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//×î¸ßÖ»ÄÜÊÇ36½øÖÆ£¬1Î»ÊıÖ»ÓĞ0 ~ zÕâ36¸ö×Ö·ûÀ´±íÊ¾£¬Èç¹ûĞèÒª¸ü¸ß½øÖÆ£¬ÄÇµÃÓÃASCIIÀïµÄÆäËû×Ö·ûÀ´´Õ¡£
-//Ü³£¬ÕâÌâ£¬¿ÉÒÔ´óÓÚ36½øÖÆ£¬ÄÇË¡ÎÒÖ±ÑÔ£¬Ò»½øÖÆÄØ£¿
-//Ò»½øÖÆÆäÊµ¾ÍÊÇ¶ÑµşÍ¬Ò»¸öÊı×ÖÀ´¼ÆÊı£¬±ÈÈçÎÒÓÃ0À´¼Æ£¬100¾Í¿ÉÒÔ±íÊ¾Îª000...0£¨100Î»£©£¬ÓÃ1À´¼Æ£¬10¾Í¿ÉÒÔ±íÊ¾Îª1111111111¡£
-//Ò»¿ªÊ¼²âÊÔµã´íÁËÒ»°ë£¬ÎÒleftºÍrightÍêÈ«Ïë´íÁË£¬ËäÈ»Ã»ÓĞ³¬Ê±µ«ºÜÈİÒ×Òç³ö£¬Èç¹û°´ÕıÈ·µÄleftºÍrightË¼Â·µÄ»°£¬ÕâÌâ²»´í¡£
-//×îºóÈç¹ûÓĞ²âÊÔµã²»¶ÔµÄ»°£¬Ö»¹Ü°ÑËùÓĞÉæ¼°µ½´ğ°¸µÄÊı¾İ¼ì²éÒ»±éÊÇ·ñÊÇlong long int¼´¿É¡£
+//æœ€é«˜åªèƒ½æ˜¯36è¿›åˆ¶ï¼Œ1ä½æ•°åªæœ‰0 ~ zè¿™36ä¸ªå­—ç¬¦æ¥è¡¨ç¤ºï¼Œå¦‚æœéœ€è¦æ›´é«˜è¿›åˆ¶ï¼Œé‚£å¾—ç”¨ASCIIé‡Œçš„å…¶ä»–å­—ç¬¦æ¥å‡‘ã€‚
+//è‰¹ï¼Œè¿™é¢˜ï¼Œå¯ä»¥å¤§äº36è¿›åˆ¶ï¼Œé‚£æ•æˆ‘ç›´è¨€ï¼Œä¸€è¿›åˆ¶å‘¢ï¼Ÿ
+//ä¸€è¿›åˆ¶å…¶å®å°±æ˜¯å †å åŒä¸€ä¸ªæ•°å­—æ¥è®¡æ•°ï¼Œæ¯”å¦‚æˆ‘ç”¨0æ¥è®¡ï¼Œ100å°±å¯ä»¥è¡¨ç¤ºä¸º000...0ï¼ˆ100ä½ï¼‰ï¼Œç”¨1æ¥è®¡ï¼Œ10å°±å¯ä»¥è¡¨ç¤ºä¸º1111111111ã€‚
+//ä¸€å¼€å§‹æµ‹è¯•ç‚¹é”™äº†ä¸€åŠï¼Œæˆ‘leftå’Œrightå®Œå…¨æƒ³é”™äº†ï¼Œè™½ç„¶æ²¡æœ‰è¶…æ—¶ä½†å¾ˆå®¹æ˜“æº¢å‡ºï¼Œå¦‚æœæŒ‰æ­£ç¡®çš„leftå’Œrightæ€è·¯çš„è¯ï¼Œè¿™é¢˜ä¸é”™ã€‚
+//æœ€åå¦‚æœæœ‰æµ‹è¯•ç‚¹ä¸å¯¹çš„è¯ï¼Œåªç®¡æŠŠæ‰€æœ‰æ¶‰åŠåˆ°ç­”æ¡ˆçš„æ•°æ®æ£€æŸ¥ä¸€éæ˜¯å¦æ˜¯long long intå³å¯ã€‚

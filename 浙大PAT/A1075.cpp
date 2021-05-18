@@ -34,26 +34,26 @@ int main(int argc, char *argv[]) {
 
 	long **records = new long*[100000];
 	for (int i = 0; i < 100000; i++) {
-		records[i] = new long[K];//Õ¦³õÊ¼»¯°¡...
+		records[i] = new long[K];//å’‹åˆå§‹åŒ–å•Š...
 		memset(records[i], -2, K * sizeof(records[i]));
 	}
 
 	long userid;
 	int problemid, partialscore, cur = 0;
-	map<long, vector<bool>> flag;//¼ÇÂ¼ÓĞÄÄĞ©Ñ§Éú²Î¼Ó¿¼ÊÔÁË£¬ÕâÀïÖ÷ÒªÊÇÕâ¸ö×÷ÓÃ£¬Æä´ÎÊÇ¼ÇÂ¼È«¶ÔµÄÌâÄ¿Êı
+	map<long, vector<bool>> flag;//è®°å½•æœ‰å“ªäº›å­¦ç”Ÿå‚åŠ è€ƒè¯•äº†ï¼Œè¿™é‡Œä¸»è¦æ˜¯è¿™ä¸ªä½œç”¨ï¼Œå…¶æ¬¡æ˜¯è®°å½•å…¨å¯¹çš„é¢˜ç›®æ•°
 	map<long, vector<bool>>::iterator itemp;
 	for (int i = 0; i < M; i++) {
 		scanf("%ld %d %d", &userid, &problemid, &partialscore);
 		if (partialscore >= 0) {
 			itemp = flag.find(userid);
-			if (partialscore == fullmark[problemid - 1])//ËùÓĞ²âÊÔµãÍ¨¹ı
-				if (itemp == flag.end()) {//mapÕÒ²»µ½key»á·µ»ØÖ¸µ½endµÄµü´úÆ÷
+			if (partialscore == fullmark[problemid - 1])//æ‰€æœ‰æµ‹è¯•ç‚¹é€šè¿‡
+				if (itemp == flag.end()) {//mapæ‰¾ä¸åˆ°keyä¼šè¿”å›æŒ‡åˆ°endçš„è¿­ä»£å™¨
 					vector<bool> vtemp(K, false);
 					vtemp[problemid - 1] = true;
 					flag.insert(map<long, vector<bool>>::value_type(userid, vtemp));
 				}
-				else itemp->second[problemid - 1] = true;//¶ø²»ÊÇµ¥´¿itemp->second++;
-			else //ÓĞ²âÊÔµãÃ»¹ı
+				else itemp->second[problemid - 1] = true;//è€Œä¸æ˜¯å•çº¯itemp->second++;
+			else //æœ‰æµ‹è¯•ç‚¹æ²¡è¿‡
 				if (itemp == flag.end()) {
 					vector<bool> vtemp(K, false);
 					flag.insert(map<long, vector<bool>>::value_type(userid, vtemp));
@@ -91,8 +91,8 @@ int main(int argc, char *argv[]) {
 		else;
 		printf("%d %05ld %d", testees[i].rank, testees[i].userid, testees[i].total);
 		for (int j = 0; j < K; j++) {
-			if (records[testees[i].userid][j] < -1) printf(" -");//Ã»Ìá½»¹ı
-			else if (records[testees[i].userid][j] == -1) printf(" 0");//±àÒëÃ»Í¨¹ı
+			if (records[testees[i].userid][j] < -1) printf(" -");//æ²¡æäº¤è¿‡
+			else if (records[testees[i].userid][j] == -1) printf(" 0");//ç¼–è¯‘æ²¡é€šè¿‡
 			else printf(" %d", records[testees[i].userid][j]);
 		}
 		printf("\n");
@@ -102,9 +102,9 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 /*
-¶àÊä³öÁËÒ»¸ö0£¬°ëÌìÃ»ÓĞ¿´¼û£¬ÍÂÑª...
-¹ØÓÚ²âÊÔµã4£¬ÄãÌá½»ÁËÒ»´ÎÂú·Ö´ğ°¸£¬»¹¿ÉÒÔÔÙÌá½»Ò»´ÎÂú·Ö´ğ°¸£¬´ğ¶ÔÌâ´ÎÊıÊÇ²»±äµÄ£¡
-Îª×Ô¼ºµÄÊ§Îó£¬ÔÚ¾µ×ÓÇ°¸ø×Ô¼ºÖØÖØ¿ÄÈı¸öÏìÍ·¡£
+å¤šè¾“å‡ºäº†ä¸€ä¸ª0ï¼ŒåŠå¤©æ²¡æœ‰çœ‹è§ï¼Œåè¡€...
+å…³äºæµ‹è¯•ç‚¹4ï¼Œä½ æäº¤äº†ä¸€æ¬¡æ»¡åˆ†ç­”æ¡ˆï¼Œè¿˜å¯ä»¥å†æäº¤ä¸€æ¬¡æ»¡åˆ†ç­”æ¡ˆï¼Œç­”å¯¹é¢˜æ¬¡æ•°æ˜¯ä¸å˜çš„ï¼
+ä¸ºè‡ªå·±çš„å¤±è¯¯ï¼Œåœ¨é•œå­å‰ç»™è‡ªå·±é‡é‡ç£•ä¸‰ä¸ªå“å¤´ã€‚
 4 3 8
 20 30 40
 00001 1 15

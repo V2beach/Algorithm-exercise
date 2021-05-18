@@ -25,4 +25,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//我要被自己笑死了，盯着题看了半天，以为是求最优解
+//鎴戣琚嚜宸辩瑧姝讳簡锛岀洴鐫�棰樼湅浜嗗崐澶╋紝浠ヤ负鏄眰鏈�浼樿В

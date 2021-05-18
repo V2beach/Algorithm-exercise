@@ -6,7 +6,7 @@ using namespace std;
 
 int nonIncreasing(int num) {
 	char digits[5];
-	sprintf(digits, "%04d", num);//±Ê¼Ç£ºÒÔºóitoaÈ«²¿¸Ä³Ésprintf
+	sprintf(digits, "%04d", num);//ç¬”è®°ï¼šä»¥åitoaå…¨éƒ¨æ”¹æˆsprintf
 	sort(digits, digits + 4);
 	return (digits[3] - '0') * 1000 + (digits[2] - '0') * 100 + (digits[1] - '0') * 10 + (digits[0] - '0');
 }
@@ -21,7 +21,7 @@ int nonDecreasing(int num) {
 int main(int argc, char *argv[]) {
 	int num;
 	scanf("%d", &num);
-	if (num == 6174) printf("7641 - 1467 = 6174");//ºÜÖØÒªµÄÒ»¸ö²âÊÔµã£¬¼ÇµÃ²âÊÔ±ß½çºÍÌØÊâÌõ¼ş
+	if (num == 6174) printf("7641 - 1467 = 6174");//å¾ˆé‡è¦çš„ä¸€ä¸ªæµ‹è¯•ç‚¹ï¼Œè®°å¾—æµ‹è¯•è¾¹ç•Œå’Œç‰¹æ®Šæ¡ä»¶
 	while (num != 0 && num != 6174) {
 		int a = nonIncreasing(num);
 		int b = nonDecreasing(num);
@@ -31,5 +31,5 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//´ÓHashÌøµ½¼òµ¥ÊıÑ§£¬Ö®ºóË³×Åµİ¹é¼ÌĞøĞ´£¬×î½üÌ«¸¡Ôê£¬Òª³Á×¡Æø£¬½ñÌì¾ÍĞ´ÍêÕâµÀ°É¡£
-//ÎÒÄÜÏëµ½µÄ×ö·¨£¬1×ª×Ö·û´®£¬2ÖğÎ»³ı£¬È»ºóËÄ¸öÊı×ÖÅÅĞò¡£
+//ä»Hashè·³åˆ°ç®€å•æ•°å­¦ï¼Œä¹‹åé¡ºç€é€’å½’ç»§ç»­å†™ï¼Œæœ€è¿‘å¤ªæµ®èºï¼Œè¦æ²‰ä½æ°”ï¼Œä»Šå¤©å°±å†™å®Œè¿™é“å§ã€‚
+//æˆ‘èƒ½æƒ³åˆ°çš„åšæ³•ï¼Œ1è½¬å­—ç¬¦ä¸²ï¼Œ2é€ä½é™¤ï¼Œç„¶åå››ä¸ªæ•°å­—æ’åºã€‚

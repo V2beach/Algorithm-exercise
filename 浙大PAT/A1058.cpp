@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {//·Ö±ğÊÇ17½øÖÆºÍ29½øÖÆ
+int main(int argc, char *argv[]) {//åˆ†åˆ«æ˜¯17è¿›åˆ¶å’Œ29è¿›åˆ¶
 	int galleon[2], sickle[2], knut[2], gal, sic, knu;
 	scanf("%d.%d.%d %d.%d.%d", &galleon[0], &sickle[0], &knut[0], &galleon[1], &sickle[1], &knut[1]);
 
@@ -22,4 +22,4 @@ int main(int argc, char *argv[]) {//·Ö±ğÊÇ17½øÖÆºÍ29½øÖÆ
 	system("pause");
 	return 0;
 }
-//²»ÊÇÕâÒ²Ì«¼òµ¥ÁË
+//ä¸æ˜¯è¿™ä¹Ÿå¤ªç®€å•äº†

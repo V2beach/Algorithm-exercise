@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 	scanf("%d", &N);
 	char **username = new char*[N];
 	char **password = new char*[N];
-	int *modified = new int[N]();//²»¼ÓÀ¨ºÅ²»»á³õÊ¼»¯£¡²îµãÍüÁË£¬¼Çµ½±Ê¼ÇÀï
+	int *modified = new int[N]();//ä¸åŠ æ‹¬å·ä¸ä¼šåˆå§‹åŒ–ï¼å·®ç‚¹å¿˜äº†ï¼Œè®°åˆ°ç¬”è®°é‡Œ
 	//printf("%d",modified[0]);
 	for (int i = 0; i < N; i++) {
 		username[i] = new char[10];
@@ -51,4 +51,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//¹ıÓÚ¼òµ¥ÁË£¬µ«Áø‹SÓÃµÄÊÇset£¬±ÈÎÒµÄĞ§ÂÊ¸ß£¬Ñ§Ï°Ò»¸ö
+//è¿‡äºç®€å•äº†ï¼Œä½†æŸ³å©¼ç”¨çš„æ˜¯setï¼Œæ¯”æˆ‘çš„æ•ˆç‡é«˜ï¼Œå­¦ä¹ ä¸€ä¸ª

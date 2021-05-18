@@ -13,7 +13,7 @@ struct Bign {
 Bign doubleBign(Bign bign) {
 	Bign fuck;
 	fuck.len = bign.len;
-	int shit = 0, pussy = 0;//½øÎ»ºÍ±¾Î»
+	int shit = 0, pussy = 0;//è¿›ä½å’Œæœ¬ä½
 	for (int i = 0; i < bign.len; i++) {
 		pussy = bign.digits[i] * 2 + shit;
 		shit = pussy / 10;
@@ -41,7 +41,7 @@ bool areTheyTheSame(Bign a, Bign b) {
 int main(int argc, char *argv[]) {
 	char buff[21];
 	scanf("%s", buff);
-	Bign bign;//×ª»»
+	Bign bign;//è½¬æ¢
 	bign.len = strlen(buff);
 	for (int i = 0; i < bign.len; i++) {
 		bign.digits[i] = buff[bign.len - i - 1] - '0';
@@ -55,4 +55,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//´óÕûÊıÔËËã»¹ÊÇºÜºÃ×öµÄ£¬Ö»ÊÇĞèÒª×¢Òâ²âÊÔ¸÷ÖÖÌØÊâÌõ¼ş¡£
+//å¤§æ•´æ•°è¿ç®—è¿˜æ˜¯å¾ˆå¥½åšçš„ï¼Œåªæ˜¯éœ€è¦æ³¨æ„æµ‹è¯•å„ç§ç‰¹æ®Šæ¡ä»¶ã€‚

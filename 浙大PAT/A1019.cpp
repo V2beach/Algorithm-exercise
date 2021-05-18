@@ -9,12 +9,12 @@ int main(int argc, char *argv[]) {
 	scanf("%d %d", &decimal, &base);
 	int result[6324];
 
-	do {//ÕâÑù´æµÄÊıÊÇ·´µÄ
+	do {//è¿™æ ·å­˜çš„æ•°æ˜¯åçš„
 		result[cursor++] = decimal % base;
 		decimal = decimal / base;
 	} while (decimal != 0);
 
-	//ÅĞ¶Ï»ØÎÄÊı£¬ÀÁµÃ·Åµ½Ò»¸öº¯ÊıÀïÁË
+	//åˆ¤æ–­å›æ–‡æ•°ï¼Œæ‡’å¾—æ”¾åˆ°ä¸€ä¸ªå‡½æ•°é‡Œäº†
 	bool flag = true;
 	for (int i = 0; i < cursor; i++)
 		if (result[i] != result[cursor - i - 1])
@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
 	else
 		printf("No\n");
 
-	//´òÓ¡
+	//æ‰“å°
 	for (int i = cursor - 1; i >= 0; i--) {
 		printf("%d", result[i]);
 		if (i != 0)
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//10->base1µÄ½øÖÆ×ª»»ºÍÊéÉÏµÄË¼Â·²»ÍêÈ«Ò»Ñù£¬ÊéÉÏµÄ×ö·¨ÎÒĞ´µ½ÌâÄ¿ÀïÁË
+//10->base1çš„è¿›åˆ¶è½¬æ¢å’Œä¹¦ä¸Šçš„æ€è·¯ä¸å®Œå…¨ä¸€æ ·ï¼Œä¹¦ä¸Šçš„åšæ³•æˆ‘å†™åˆ°é¢˜ç›®é‡Œäº†
 //int main(int argc, char *argv[]) {
 //	int decimal, base1, result1 = 0;//10->base1
 //	scanf("%d %d", &decimal, &base1);

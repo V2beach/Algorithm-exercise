@@ -18,7 +18,7 @@ Fraction add(Fraction a, Fraction b) {
 	return result;
 }
 
-long gcd(long a, long b) {//Ë¬
+long gcd(long a, long b) {//çˆ½
 	return b == 0 ? a : gcd(b, a % b);
 }
 
@@ -29,16 +29,16 @@ void reduction(Fraction &a) {
 }
 
 void print(Fraction a) {
-	//1.»¯¼ò
+	//1.åŒ–ç®€
 	reduction(a);
 	long integer = a.up / a.down;
-	long up = a.up % a.down;//abs£¿£¿£¿
+	long up = a.up % a.down;//absï¼Ÿï¼Ÿï¼Ÿ
 	long down = a.down;
-	//2.ÕûÊı
+	//2.æ•´æ•°
 	if (down == 1 || up == 0) printf("%ld", integer);
-	//3.¼Ù·ÖÊı
+	//3.å‡åˆ†æ•°
 	else if (integer != 0) printf("%ld %ld/%ld", integer, up, down);
-	//4.Õæ·ÖÊı
+	//4.çœŸåˆ†æ•°
 	else printf("%ld/%ld", up, down);
 }
 
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < N; i++) {
 		scanf("%ld/%ld", &fraction.up, &fraction.down);
 		sum = add(sum, fraction);
-		reduction(sum);//²»»¯¼ò»áÒç³ö£¬ÕâÊÇ×îÖØÒªµÄÒ»µã
+		reduction(sum);//ä¸åŒ–ç®€ä¼šæº¢å‡ºï¼Œè¿™æ˜¯æœ€é‡è¦çš„ä¸€ç‚¹
 	}
 	print(sum);
 	system("pause");

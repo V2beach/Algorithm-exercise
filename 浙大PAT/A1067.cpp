@@ -4,34 +4,34 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {//ÂÔÈÆ
+int main(int argc, char *argv[]) {//ç•¥ç»•
 	long N = 0, count = 0;
 	scanf("%ld", &N);
 	long *numbers = new long[N];
 	long *cursor = new long[N];
 	for (int i = 0; i < N; i++) {
-		scanf("%ld", &numbers[i]);//¶Áµ½µÚi¸öÎ»ÖÃ·Å×Ånumber
-		cursor[numbers[i]] = i;//Êý×ÖnumberÔÚcursorÕâ¸öÎ»ÖÃ
+		scanf("%ld", &numbers[i]);//è¯»åˆ°ç¬¬iä¸ªä½ç½®æ”¾ç€number
+		cursor[numbers[i]] = i;//æ•°å­—numberåœ¨cursorè¿™ä¸ªä½ç½®
 	}
 	int index = 1;
 	while (numbers[0] != 0 || (numbers[0] == 0 && count == 0)) {
-		if (cursor[0] == numbers[0]) {//ÒªÅÐ¶ÏÊÇ·ñÊÇ×îºóÒ»´Î½»»»
+		if (cursor[0] == numbers[0]) {//è¦åˆ¤æ–­æ˜¯å¦æ˜¯æœ€åŽä¸€æ¬¡äº¤æ¢
 			bool isValid = true;
-			for (; index < N; index++) {//»»Ò»¸öÆäËûµÄ²»ÔÚ×Ô¼º¸ÃÔÚÎ»ÖÃµÄÊý
+			for (; index < N; index++) {//æ¢ä¸€ä¸ªå…¶ä»–çš„ä¸åœ¨è‡ªå·±è¯¥åœ¨ä½ç½®çš„æ•°
 				if (index != numbers[index] && numbers[index] != 0) {
 					long temp1 = cursor[0], temp2 = cursor[numbers[index]];
-					swap(cursor[0], cursor[numbers[index]]);//cursor[numbers[i]]¼´i
+					swap(cursor[0], cursor[numbers[index]]);//cursor[numbers[i]]å³i
 					swap(numbers[temp1], numbers[temp2]);
 					isValid = false;
 					break;
 				}
 			}
 			if (isValid && numbers[0] == 0) break;
-			if (isValid) swap(numbers[cursor[0]], numbers[cursor[cursor[0]]]);//³É¹¦ÁË£¬cursor[cursor[0]]Ó¦¸ÃÊÇ0
+			if (isValid) swap(numbers[cursor[0]], numbers[cursor[cursor[0]]]);//æˆåŠŸäº†ï¼Œcursor[cursor[0]]åº”è¯¥æ˜¯0
 		}
 		else {
 			long temp1 = cursor[0], temp2 = cursor[cursor[0]];
-			swap(cursor[0], cursor[cursor[0]]);//½«0ºÍ0ËùÔÚÏÂ±êµÄÄÇ¸öÊý½»»»
+			swap(cursor[0], cursor[cursor[0]]);//å°†0å’Œ0æ‰€åœ¨ä¸‹æ ‡çš„é‚£ä¸ªæ•°äº¤æ¢
 			swap(numbers[temp1], numbers[temp2]);
 		}
 		count++;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {//ÂÔÈÆ
 	system("pause");
 	return 0;
 }
-//ÕâÌâ¾ÍÊÇ´óÌåÖªµÀ²âÊÔµãÊÇÊ²Ã´£¬°ë¿¨²âÊÔµã¹ýµÄ£¬
-//ÓÖÍÏÁËÒ»ÏÂÎç£¬×´Ì¬²îµ½ÀëÆ×£¬ÎÒµ½µ×ÔÚ¸ÉÊ²Ã´£¿£¿£¿
-//ÎÒ²»ÄÜÊÜ±ðÈË½Ú×àµÄÓ°Ïì£¬Ó¦¸ÃÈÃÑÐÓÑ³ÉÎªÒ»¸ö»ý¼«µÄÒòËØ¡£
-//ÒªÏë°ì·¨»Øµ½¿¼±àÒëÇ°µÄÄÇ¸ö×´Ì¬¡£
+//è¿™é¢˜å°±æ˜¯å¤§ä½“çŸ¥é“æµ‹è¯•ç‚¹æ˜¯ä»€ä¹ˆï¼ŒåŠå¡æµ‹è¯•ç‚¹è¿‡çš„ï¼Œ
+//åˆæ‹–äº†ä¸€ä¸‹åˆï¼ŒçŠ¶æ€å·®åˆ°ç¦»è°±ï¼Œæˆ‘åˆ°åº•åœ¨å¹²ä»€ä¹ˆï¼Ÿï¼Ÿï¼Ÿ
+//æˆ‘ä¸èƒ½å—åˆ«äººèŠ‚å¥çš„å½±å“ï¼Œåº”è¯¥è®©ç ”å‹æˆä¸ºä¸€ä¸ªç§¯æžçš„å› ç´ ã€‚
+//è¦æƒ³åŠžæ³•å›žåˆ°è€ƒç¼–è¯‘å‰çš„é‚£ä¸ªçŠ¶æ€ã€‚

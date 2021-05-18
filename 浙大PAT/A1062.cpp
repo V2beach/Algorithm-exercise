@@ -31,16 +31,16 @@ int main(int argc, char *argv[]) {
 		Person person;
 		scanf("%lld %d %d", &person.id, &person.virtue, &person.talent);
 		person.total = person.virtue + person.talent;
-		if (person.virtue >= L && person.talent >= L)//¼°¸ñÏß
-			if (person.virtue >= H && person.talent >= H)//²ÅµÂÈ«¾¡
+		if (person.virtue >= L && person.talent >= L)//åŠæ ¼çº¿
+			if (person.virtue >= H && person.talent >= H)//æ‰å¾·å…¨å°½
 				people1.push_back(person);
-			else if (person.virtue >= H)//µÂÊ¤²Å
+			else if (person.virtue >= H)//å¾·èƒœæ‰
 				people2.push_back(person);
-			else if (person.virtue >= person.talent)//²ÅµÂ¼æÍöµ«µÂÊ¤²ÅµÄÓ¹ÈË
+			else if (person.virtue >= person.talent)//æ‰å¾·å…¼äº¡ä½†å¾·èƒœæ‰çš„åº¸äºº
 				people3.push_back(person);
-			else//Ğ¡ÈË
+			else//å°äºº
 				people4.push_back(person);
-		else;//²»¼°¸ñ
+		else;//ä¸åŠæ ¼
 	}
 
 	sort(people1.begin(), people1.end(), cmp);
@@ -60,4 +60,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//¹âËÙÍê³É
+//å…‰é€Ÿå®Œæˆ

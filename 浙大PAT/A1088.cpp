@@ -14,7 +14,7 @@ long gcd(long a, long b) {
 }
 
 void reduction(Fraction &a) {
-	long gcdOfFraction = gcd(abs(a.up), a.down);//µ½µ×ÓĞ¼¸¸öµØ·½¿ÉÒÔ¼Óabs¼ÇÇå³ş£¬Ó¦¸ÃÖ»ÓĞ»¯¼òµÄÊ±ºòĞèÒª¼ÓÉÏ£¨Çó×îĞ¡¹«Ô¼Êı£©£¬²»¼Ó¿ÉÒÔÂğ£¿
+	long gcdOfFraction = gcd(abs(a.up), a.down);//åˆ°åº•æœ‰å‡ ä¸ªåœ°æ–¹å¯ä»¥åŠ absè®°æ¸…æ¥šï¼Œåº”è¯¥åªæœ‰åŒ–ç®€çš„æ—¶å€™éœ€è¦åŠ ä¸Šï¼ˆæ±‚æœ€å°å…¬çº¦æ•°ï¼‰ï¼Œä¸åŠ å¯ä»¥å—ï¼Ÿ
 	a.up /= gcdOfFraction;
 	a.down /= gcdOfFraction;
 }
@@ -48,8 +48,8 @@ Fraction divide(Fraction a, Fraction b) {
 	return result;
 }
 
-int print(Fraction a) {//²»·µ»ØÖµÃ»·¨ÓÃÈıÄ¿ÔËËã?:
-	//1.»¯¼ò
+int print(Fraction a) {//ä¸è¿”å›å€¼æ²¡æ³•ç”¨ä¸‰ç›®è¿ç®—?:
+	//1.åŒ–ç®€
 	reduction(a);
 	long integer = a.up / a.down;
 	long up = a.up % a.down;
@@ -57,11 +57,11 @@ int print(Fraction a) {//²»·µ»ØÖµÃ»·¨ÓÃÈıÄ¿ÔËËã?:
 
 	if (a.up < 0) printf("(");
 
-	//2.ÕûÊı
+	//2.æ•´æ•°
 	if (down == 1 || up == 0) printf("%ld", integer);
-	//3.¼Ù·ÖÊı
-	else if (integer != 0) printf("%ld %ld/%ld", integer, abs(up), down);//ÕâÀïÒ²Òª¼Óabs°¡£¬A1081²âÊÔµã²»È«£¡
-	//4.Õæ·ÖÊı
+	//3.å‡åˆ†æ•°
+	else if (integer != 0) printf("%ld %ld/%ld", integer, abs(up), down);//è¿™é‡Œä¹Ÿè¦åŠ abså•Šï¼ŒA1081æµ‹è¯•ç‚¹ä¸å…¨ï¼
+	//4.çœŸåˆ†æ•°
 	else printf("%ld/%ld", up, down);
 
 	if (a.up < 0) printf(")");
@@ -69,7 +69,7 @@ int print(Fraction a) {//²»·µ»ØÖµÃ»·¨ÓÃÈıÄ¿ÔËËã?:
 }
 
 int main(int argc, char *argv[]) {
-	Fraction a, b;//long¾Í¹»ÁË£¬×ãÒÔÍ¨¹ıËùÓĞ²âÊÔµã£¬±¾À´Ò²ÊÇÏëÓÃlong longµÄ
+	Fraction a, b;//longå°±å¤Ÿäº†ï¼Œè¶³ä»¥é€šè¿‡æ‰€æœ‰æµ‹è¯•ç‚¹ï¼Œæœ¬æ¥ä¹Ÿæ˜¯æƒ³ç”¨long longçš„
 	scanf("%ld/%ld %ld/%ld", &a.up, &a.down, &b.up, &b.down);
 	print(a); printf(" + "); print(b); printf(" = "); print(add(a, b)); printf("\n");
 	print(a); printf(" - "); print(b); printf(" = "); print(subtract(a, b)); printf("\n");
@@ -78,5 +78,5 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//¼ÇµÃµ±³õÄ£Äâ¿¼ÊÔ¾ÍĞ´ÁËÕâÒ»µÀ£¬Ü³£¬²»ÒªÔÙ·ÏÎïÏÂÈ¥ÁË¡£
-//Ïñ·ÖÊıÕâÖÖÌâ£¬¾ÍÊÇ·Ç³£Ä£°å»¯µÄ²Ù×÷£¬µ«Ò²ÓĞºÜ¶àÏ¸½Ú±ÈÈç¸ººÅÔõÃ´´¦ÀíĞèÒª×¢Òâ£¬¼ÇµÃÕûÀí±Ê¼Ç¡£
+//è®°å¾—å½“åˆæ¨¡æ‹Ÿè€ƒè¯•å°±å†™äº†è¿™ä¸€é“ï¼Œè‰¹ï¼Œä¸è¦å†åºŸç‰©ä¸‹å»äº†ã€‚
+//åƒåˆ†æ•°è¿™ç§é¢˜ï¼Œå°±æ˜¯éå¸¸æ¨¡æ¿åŒ–çš„æ“ä½œï¼Œä½†ä¹Ÿæœ‰å¾ˆå¤šç»†èŠ‚æ¯”å¦‚è´Ÿå·æ€ä¹ˆå¤„ç†éœ€è¦æ³¨æ„ï¼Œè®°å¾—æ•´ç†ç¬”è®°ã€‚

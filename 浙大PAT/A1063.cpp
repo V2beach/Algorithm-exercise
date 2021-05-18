@@ -35,16 +35,16 @@ int main(int argc, char *argv[]) {
 	double rate;
 	for (int i = 0; i < K; i++) {
 		scanf("%d %d", &set1, &set2);
-		set1--; set2--;//´Ó0¼ÆÊýºÍ´Ó1¼ÆÊýµÄÇø±ð
+		set1--; set2--;//ä»Ž0è®¡æ•°å’Œä»Ž1è®¡æ•°çš„åŒºåˆ«
 		rate = computeSets(sets[set1], sets[set2]);
 		printf("%.1lf%%\n", rate);
 	}
 	system("pause");
 	return 0;
 }
-//±¸×¢£¬´òÓ¡°Ù·ÖºÅ%%£¬»¹ÓÐÏÂÃæµÄÕâÒ»Ìõ¡£
-//setºÍunordered_set£¬mapºÍunordered_map£¬Ñ§Ï°Ò»ÏÂÊµÏÖÔ­ÀíºÍÓÅÈ±µã£¡
-//ÏÂÃæÊÇÔ­ÏÈµÄÐ´·¨£¬¾Þ¼òµ¥£¬µ«ÊÇÒòÎªºÏ²¢setÊ±¼ä¸´ÔÓ¶ÈÓÐµã¸ßµ¼ÖÂ×îºóÒ»×é²âÊÔÊý¾Ý³¬Ê±¡£
+//å¤‡æ³¨ï¼Œæ‰“å°ç™¾åˆ†å·%%ï¼Œè¿˜æœ‰ä¸‹é¢çš„è¿™ä¸€æ¡ã€‚
+//setå’Œunordered_setï¼Œmapå’Œunordered_mapï¼Œå­¦ä¹ ä¸€ä¸‹å®žçŽ°åŽŸç†å’Œä¼˜ç¼ºç‚¹ï¼
+//ä¸‹é¢æ˜¯åŽŸå…ˆçš„å†™æ³•ï¼Œå·¨ç®€å•ï¼Œä½†æ˜¯å› ä¸ºåˆå¹¶setæ—¶é—´å¤æ‚åº¦æœ‰ç‚¹é«˜å¯¼è‡´æœ€åŽä¸€ç»„æµ‹è¯•æ•°æ®è¶…æ—¶ã€‚
 //#pragma warning(disable: 4996)
 //#include <cstdio>
 //#include <set>
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 //	for (int i = 0; i < K; i++) {
 //		unordered_set<long> temp;
 //		scanf("%d %d", &set1, &set2);
-//		set1--; set2--;//´Ó0¼ÆÊýºÍ´Ó1¼ÆÊýµÄÇø±ð
+//		set1--; set2--;//ä»Ž0è®¡æ•°å’Œä»Ž1è®¡æ•°çš„åŒºåˆ«
 //		temp.insert(sets[set1].begin(), sets[set1].end());
 //		temp.insert(sets[set2].begin(), sets[set2].end());
 //		rate = double(sets[set1].size() + sets[set2].size() - temp.size()) / double(temp.size()) * 100.0;

@@ -14,7 +14,7 @@ bool cmp(Product a, Product b) {
 
 int main(int argc, char *argv[]) {
 	int N;
-	double D;//×¢ÒâÕâÀïÒ²Ó¦¸ÃÊÇdouble£¡
+	double D;//æ³¨æ„è¿™é‡Œä¹Ÿåº”è¯¥æ˜¯doubleï¼
 	scanf("%d %lf", &N, &D);
 	Product *products = new Product[N];
 	for (int i = 0; i < N; i++)
@@ -39,4 +39,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//Ğ´ÍêÌ°ĞÄ·¨µÄÌâ£¬ÔÙÂıÂıÌå»áµİ¹é£¬Ì«¸¡Ôê£¬Ö÷ÒªÊÇÒòÎªÑĞ¾¿ËùµÄÊÂ»¹ÍêÈ«Ã»¸ãÍê
+//å†™å®Œè´ªå¿ƒæ³•çš„é¢˜ï¼Œå†æ…¢æ…¢ä½“ä¼šé€’å½’ï¼Œå¤ªæµ®èºï¼Œä¸»è¦æ˜¯å› ä¸ºç ”ç©¶æ‰€çš„äº‹è¿˜å®Œå…¨æ²¡æå®Œ

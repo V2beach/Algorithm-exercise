@@ -4,19 +4,19 @@
 
 using namespace std;
 
-long long binarySearch(long long array[], long long left, long long right, long long val) {//Õâ¸ö´úÂë²éÕÒµÄÊÇµÚÒ»¸ö´óÓÚvalµÄÎ»ÖÃ
+long long binarySearch(long long array[], long long left, long long right, long long val) {//è¿™ä¸ªä»£ç æŸ¥æ‰¾çš„æ˜¯ç¬¬ä¸€ä¸ªå¤§äºvalçš„ä½ç½®
 	long long mid;
-	while (left < right) {//left == rightÊ±ÒÑ¾­ÕÒµ½Î»ÖÃÁË
+	while (left < right) {//left == rightæ—¶å·²ç»æ‰¾åˆ°ä½ç½®äº†
 		mid = (left + right) / 2;
-		if (array[mid] > val)//ÕâÀï¿ÉÄÜ¾ÍÊÇµÚÒ»¸ö´óÓÚµÄÎ»ÖÃ
+		if (array[mid] > val)//è¿™é‡Œå¯èƒ½å°±æ˜¯ç¬¬ä¸€ä¸ªå¤§äºçš„ä½ç½®
 			right = mid;
 		else
 			left = mid + 1;
 	}
-	return left;//¸úrightÒ»Ñù
+	return left;//è·Ÿrightä¸€æ ·
 }
 
-int main(int argc, char *argv[]) {//×Ô¼ºĞ´Ò»¸ö£¬È»ºó¸úËã·¨±Ê¼ÇÉÏµÄ´úÂëºÍË¼Â·¶Ô±ÈÒ»ÏÂ£¬È¡³¤²¹¶Ì
+int main(int argc, char *argv[]) {//è‡ªå·±å†™ä¸€ä¸ªï¼Œç„¶åè·Ÿç®—æ³•ç¬”è®°ä¸Šçš„ä»£ç å’Œæ€è·¯å¯¹æ¯”ä¸€ä¸‹ï¼Œå–é•¿è¡¥çŸ­
 	long long N, p, length = -1;
 	scanf("%lld %lld", &N, &p);
 	long long *sequence = new long long[N];
@@ -32,5 +32,5 @@ int main(int argc, char *argv[]) {//×Ô¼ºĞ´Ò»¸ö£¬È»ºó¸úËã·¨±Ê¼ÇÉÏµÄ´úÂëºÍË¼Â·¶Ô±È
 	system("pause");
 	return 0;
 }
-//Ò»´ÎAC£¬¹ûÈ»»¹ÊÇÒª¿´Êé£¡
-//Ëã·¨±Ê¼ÇĞ´µÄË¼Â·ºÜÏêÏ¸
+//ä¸€æ¬¡ACï¼Œæœç„¶è¿˜æ˜¯è¦çœ‹ä¹¦ï¼
+//ç®—æ³•ç¬”è®°å†™çš„æ€è·¯å¾ˆè¯¦ç»†

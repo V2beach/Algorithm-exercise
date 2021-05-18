@@ -8,12 +8,12 @@ using namespace std;
 
 int M, N, K;
 
-bool isPossible(vector<int> seq) {//Ë¼¿¼Á¿Ô¶´óÓÚ´úÂëÁ¿µÄÒ»µÀÌâ£¬ºËĞÄË¼ÏëÊÇÄ£ÄâÌâÄ¿¹ı³Ì£¡¶ø²»ÊÇ´Ó½á¹ûÈëÊÖ·ÖÎöÇé¿ö¡£
+bool isPossible(vector<int> seq) {//æ€è€ƒé‡è¿œå¤§äºä»£ç é‡çš„ä¸€é“é¢˜ï¼Œæ ¸å¿ƒæ€æƒ³æ˜¯æ¨¡æ‹Ÿé¢˜ç›®è¿‡ç¨‹ï¼è€Œä¸æ˜¯ä»ç»“æœå…¥æ‰‹åˆ†ææƒ…å†µã€‚
 	int index = 1;
 	stack<int> sequence;
 	for (int i = 0; i < N; i++) {
 		if (sequence.empty() || sequence.top() < seq[i]) {
-			//if (index >= seq[])  ¿¼ÂÇÌ«¶àÁË£¬ÏÈÌá½»Ò»´ÎÊÔÊÔ¿´
+			//if (index >= seq[])  è€ƒè™‘å¤ªå¤šäº†ï¼Œå…ˆæäº¤ä¸€æ¬¡è¯•è¯•çœ‹
 			for (int j = index; j <= seq[i]; j++)
 				sequence.push(j);
 			if (sequence.size() > M) return false;

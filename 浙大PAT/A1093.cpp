@@ -30,9 +30,9 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//ÕýÈ·ÇÒÆ¯ÁÁµÄË¼Â·ÊÇ£¬ÕÒµ½Ã¿Ò»¸öA£¬¼ÆËã×ó±ßºÍÓÒ±ßµÄPºÍTµÄ×ÜÊý³Ë»ý£¬
-//¶ø×î¿ìµÄ¼ÆÊý·½·¨ÊÇÔÚ±éÀúÊ±ºò¼Ç×¡µ½Ä³¸öµãµÄËùÓÐPTÊýÁ¿£¬±ðÍü¼ÇÈ¡Óà¡£
-//ÏÂÃæÕâÖÖÐ´·¨2 3 4Èý¸ö²âÊÔµãÈ«³¬Ê±ÁË£¬ÒªÊÇ¿¼ÊÔÅöÉÏÕâÑùµÄÌâÊÇÕæµÄ·³...
+//æ­£ç¡®ä¸”æ¼‚äº®çš„æ€è·¯æ˜¯ï¼Œæ‰¾åˆ°æ¯ä¸€ä¸ªAï¼Œè®¡ç®—å·¦è¾¹å’Œå³è¾¹çš„På’ŒTçš„æ€»æ•°ä¹˜ç§¯ï¼Œ
+//è€Œæœ€å¿«çš„è®¡æ•°æ–¹æ³•æ˜¯åœ¨éåŽ†æ—¶å€™è®°ä½åˆ°æŸä¸ªç‚¹çš„æ‰€æœ‰PTæ•°é‡ï¼Œåˆ«å¿˜è®°å–ä½™ã€‚
+//ä¸‹é¢è¿™ç§å†™æ³•2 3 4ä¸‰ä¸ªæµ‹è¯•ç‚¹å…¨è¶…æ—¶äº†ï¼Œè¦æ˜¯è€ƒè¯•ç¢°ä¸Šè¿™æ ·çš„é¢˜æ˜¯çœŸçš„çƒ¦...
 //#pragma warning(disable: 4996)
 //#include <cstdio>
 //#include <cstring>

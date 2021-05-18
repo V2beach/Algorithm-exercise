@@ -5,38 +5,38 @@
 
 using namespace std;
 
-string toSci(string str, int valid) {//д����ȥ��ʱ��Ӳ��ͷƤд
+string toSci(string str, int valid) {//写不下去的时候硬着头皮写
 	string sci;
-	//Ҫȥ��ǰ��0
+	//要去除前导0
 	while (str[0] == '0')
 		str.erase(str.begin());
-	if (str[0] == '.' || str.size() <= 0) {//�ȴ�����������Ϊ������
+	if (str[0] == '.' || str.size() <= 0) {//先处理整数部分为零的情况
 		int nonZero = -1, zhishu = 0;
 		if (str.size() <= 0) sci = "0";
 		else {
-			for (int i = 2; i < str.size(); i++)//�ҵ���һ����Ϊ���λ��
+			for (int i = 2; i < str.size(); i++)//找到第一个不为零的位置
 				if (str[i] != '0') {
 					nonZero = i;
 					break;
 				}
-			if (nonZero == -1) sci = "0";//�Ҳ����ͻ���0
-			else {//����0�������������
-				zhishu = -(nonZero - 1);//�ҵ��˾ͻ������Ч�������ַ���
-				sci = str.substr(nonZero);//Ӧ�ÿ��Խ�ȡ�����
+			if (nonZero == -1) sci = "0";//找不到就还是0
+			else {//不是0的情况都在这里
+				zhishu = -(nonZero - 1);//找到了就获得了有效的数字字符串
+				sci = str.substr(nonZero);//应该可以截取到最后
 			}
 		}
 		int siz = sci.size();
 		if (sci.size() > valid)
 			sci = sci.substr(0, valid);
-		else if (sci.size() < valid)//λ�������ʹ�0
-			for (int i = 0; i < valid - siz; i++)//ǧ��Ҫ��һ����̬�����ŵ����������sci.size()
+		else if (sci.size() < valid)//位数不够就凑0
+			for (int i = 0; i < valid - siz; i++)//千万不要把一个动态的数放到条件里比如sci.size()
 				sci += "0";
 		else;
-		sci = "0." + sci + "*10^" + to_string(zhishu);//sci����Чλ��zhishu��ָ��
+		sci = "0." + sci + "*10^" + to_string(zhishu);//sci是有效位，zhishu是指数
 	}
-	else {//�ٴ���һ��ʼ�����������
+	else {//再处理一开始做的那种情况
 		int slen = str.size();
-		for (int i = 0; i < slen; i++)//�ҵ�.������Ҳ�����ûС��λ
+		for (int i = 0; i < slen; i++)//找到.，如果找不到就没小数位
 			if (str[i] == '.') {
 				str.erase(str.begin() + i);
 				slen = i;
@@ -52,7 +52,7 @@ string toSci(string str, int valid) {//д����ȥ��ʱ��Ӳ��ͷƤд
 }
 
 int main(int argc, char* argv[]) {
-	int N;//���ȣ�����˵��Чλ��
+	int N;//精度，或者说有效位数
 	string A, B, C, D;
 	ios::sync_with_stdio(false);
 	cin >> N >> A >> B;
@@ -63,12 +63,12 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//���Ե�4ʵ����̫���ˣ���0001.1������ʽ...��ע�������Ż�����Ϊ��ѧ��������ģ�塣
-//ԭ���õ��������������ֻ��������ĿSampleInput SampleOutput���ֱ����������ˣ�û�кúö��⣬
-//һ����ͨ����ֻ��0 1 2 5���Ե���ȷ��3 4 6���Ե��Ǵ��ģ��ҹ�����0.xxx�����ݡ�
-//֮�������ת�˿�ѧ��������ʾ���ж��ǲ�����ȣ��������ȷ���뷨��д��������Ҳ�������������Sһ����
-//��������˵һ���ͺã�ֻ����Ӧ����������Ƕ���ѧ����·���ؽ������Ч�ʽϸߣ���Ȼϣ��д���ж���˼·�Ĵ��룬����Ҫ��ģ�£�
-//��Ҫ��ͼһ���ҵ����Ž⣬�Ƚ�����˵����ô���ǲ��ܺú�ʵ�����������
+//测试点4实在是太坑了，是0001.1这种形式...备注，可以优化后作为科学计数法的模板。
+//原先用的是下面的做法，只考虑了题目SampleInput SampleOutput，又被样例给误导了，没有好好读题，
+//一次跑通，但只有0 1 2 5测试点正确，3 4 6测试点是错的，我估计是0.xxx的数据。
+//之后决定先转了科学计数法表示再判断是不是相等，这才是正确的想法，写出来代码也基本和晴神柳婼一样，
+//（并不是说一样就好，只是在应付考试这个角度上学着套路化地解决问题效率较高，当然希望写出有独特思路的代码，但总要先模仿）
+//不要妄图一次找到最优解，先解了再说！怎么就是不能好好实践这个道理？
 //#pragma warning(disable: 4996)
 //#include <string>
 //#include <iostream>
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
 //	int flag = 1, Alen = A.size(), Blen = B.size();
 //	for (int i = 0; i < N && i < min(A.size(), B.size()); i++) {
 //		if (A[i] != B[i]) flag = 0;
-//		if (A[i] == '.') { A.erase(A.begin() + i); Alen = i; }//ÿһλ��char
+//		if (A[i] == '.') { A.erase(A.begin() + i); Alen = i; }//每一位是char
 //		if (B[i] == '.') { B.erase(B.begin() + i); Blen = i; }
 //	}
 //	string Ares = A.substr(0, min(N, int(A.size())));

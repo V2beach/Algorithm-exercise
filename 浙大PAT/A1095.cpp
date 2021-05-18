@@ -14,7 +14,7 @@ struct Record {
 
 struct Car {
 	char *plate;
-	long seconds;//ÔİÊ±¾ö¶¨¼ÇÂ¼ÃëÊı
+	long seconds;//æš‚æ—¶å†³å®šè®°å½•ç§’æ•°
 	Car(char *plate, long seconds) {
 		this->plate = plate;
 		this->seconds = seconds;
@@ -40,8 +40,8 @@ int computeSeconds(vector<Record> records) {
 	return seconds;
 }
 
-void computeNumOfCars(vector<Record> records, int** queries, int* &numOfCars, int K) {//·¢ÏÖÁËÒ»¸ö×Ô¼ºµÄÀí½â´íÎó£¬char* argv[]ÕâÀïµÄ*Òª¿¿×ÅÀàĞÍÃû£¬ÒòÎª´«²ÎÊ±Ò»¸öÀàĞÍÃûÖ»ÄÜ¶ÔÓ¦Ò»¸ö±äÁ¿£¬ÎÒÖªµÀ´ó¸ÅÊÇÎÒÉñ¾­ÖÊÁË£¬µ«×·ÇóÕâĞ©Ï¸Ö¦Ä©½ÚµÄ¶«Î÷È·ÊµºÜË¬
-	for (int i = 0, j = 0; i < K; i++) {//ÊÇascendingµÄ£¬±éÀúÒ»±é¾ÍĞĞ
+void computeNumOfCars(vector<Record> records, int** queries, int* &numOfCars, int K) {//å‘ç°äº†ä¸€ä¸ªè‡ªå·±çš„ç†è§£é”™è¯¯ï¼Œchar* argv[]è¿™é‡Œçš„*è¦é ç€ç±»å‹åï¼Œå› ä¸ºä¼ å‚æ—¶ä¸€ä¸ªç±»å‹ååªèƒ½å¯¹åº”ä¸€ä¸ªå˜é‡ï¼Œæˆ‘çŸ¥é“å¤§æ¦‚æ˜¯æˆ‘ç¥ç»è´¨äº†ï¼Œä½†è¿½æ±‚è¿™äº›ç»†ææœ«èŠ‚çš„ä¸œè¥¿ç¡®å®å¾ˆçˆ½
+	for (int i = 0, j = 0; i < K; i++) {//æ˜¯ascendingçš„ï¼Œéå†ä¸€éå°±è¡Œ
 		for (; j < records.size(); j += 2) {
 			long seconds1 = queries[i][0] * 3600 + queries[i][1] * 60 + queries[i][2],
 				seconds2 = records[j].hour * 3600 + records[j].minute * 60 + records[j].second,
@@ -51,7 +51,7 @@ void computeNumOfCars(vector<Record> records, int** queries, int* &numOfCars, in
 				break;
 			}
 			else if (seconds1 < seconds2) break;
-			else continue;//ÈıÖÖÇé¿ö£¬queryÔÚrecordÖ®ÄÚ£¬ÄÇ¾ÍbreakÈÃÏÂÒ»¸öqueryÀ´£»query±ÈrecordĞ¡£¬Ò²breakÈÃÏÂÒ»¸öqueryÀ´£»query±Èrecord´ó£¬¾ÍÈÃÏÂÒ»¸örecordÀ´±È£¬²»ÓÃbreak
+			else continue;//ä¸‰ç§æƒ…å†µï¼Œqueryåœ¨recordä¹‹å†…ï¼Œé‚£å°±breakè®©ä¸‹ä¸€ä¸ªqueryæ¥ï¼›queryæ¯”recordå°ï¼Œä¹Ÿbreakè®©ä¸‹ä¸€ä¸ªqueryæ¥ï¼›queryæ¯”recordå¤§ï¼Œå°±è®©ä¸‹ä¸€ä¸ªrecordæ¥æ¯”ï¼Œä¸ç”¨break
 		}
 	}
 }
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
 	vector<Car> cars;
 	vector<Record> isValidRecords;
 	int *numOfCars = new int[K]();
-	for (int i = 0; i < N; i++) {//ÕâÒ»¶Î¸úA1016Ò»Ñù£¬ÓĞ°ì·¨ÓÅ»¯Âğ
+	for (int i = 0; i < N; i++) {//è¿™ä¸€æ®µè·ŸA1016ä¸€æ ·ï¼Œæœ‰åŠæ³•ä¼˜åŒ–å—
 		if (strcmp(records[i].status, "in") == 0) {
 			if (isValid) {
 				previous = i;
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
 				isValid = true;
 			}
 		}
-		if (strcmp(records[i].plate, records[i + 1].plate) != 0 && !isValidRecords.empty() || i == N - 1) {//ÎªÊ²Ã´ÕâÀïµÄi + 1²»»á±¨´í£¿£¿£¿
+		if (strcmp(records[i].plate, records[i + 1].plate) != 0 && !isValidRecords.empty() || i == N - 1) {//ä¸ºä»€ä¹ˆè¿™é‡Œçš„i + 1ä¸ä¼šæŠ¥é”™ï¼Ÿï¼Ÿï¼Ÿ
 			Car car(records[i].plate, computeSeconds(isValidRecords));
 			cars.push_back(car);
 			computeNumOfCars(isValidRecords, queries, numOfCars, K);
@@ -113,6 +113,6 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//ÎÒÊ§°ÜÁË£¬ºóÃæÁ©²âÊÔµãÏë²»³öÀ´ÊÇÊ²Ã´£¬
-//µÈÎÒË¢ÍêµÚÁùÕÂÔÙ»ØÀ´ÖØĞÂ×ö°É
-//ÕæµÄĞÄÌ¬Õ¨ÁË£¬Ô½¿´Ô½Õ¨£¬×´Ì¬Ö»»áÔ½À´Ô½²î
+//æˆ‘å¤±è´¥äº†ï¼Œåé¢ä¿©æµ‹è¯•ç‚¹æƒ³ä¸å‡ºæ¥æ˜¯ä»€ä¹ˆï¼Œ
+//ç­‰æˆ‘åˆ·å®Œç¬¬å…­ç« å†å›æ¥é‡æ–°åšå§
+//çœŸçš„å¿ƒæ€ç‚¸äº†ï¼Œè¶Šçœ‹è¶Šç‚¸ï¼ŒçŠ¶æ€åªä¼šè¶Šæ¥è¶Šå·®

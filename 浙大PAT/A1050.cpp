@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int charToInteger(char c) {//¹þÏ£º¯Êý
+int charToInteger(char c) {//å“ˆå¸Œå‡½æ•°
 	return int(c);
 }
 

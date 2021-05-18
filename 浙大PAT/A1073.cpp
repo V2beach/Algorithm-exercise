@@ -6,10 +6,10 @@
 
 using namespace std;
 
-//ÕâÌâ¿´µ½9999BytesÕâ¸öÊıÁ¿¼¶£¬¾ÍÒ»¶¨ÓÃ×Ö·û´®´æÁË
+//è¿™é¢˜çœ‹åˆ°9999Bytesè¿™ä¸ªæ•°é‡çº§ï¼Œå°±ä¸€å®šç”¨å­—ç¬¦ä¸²å­˜äº†
 int main(int argc, char*argv[]) {
 	int zhishu;
-	char zhengfu, zhengshu[20000], xiaoshu[20000];//Òª¿ªµ½Á½±¶ÓÚ9999B
+	char zhengfu, zhengshu[20000], xiaoshu[20000];//è¦å¼€åˆ°ä¸¤å€äº9999B
 	char buffer[20000];
 	scanf("%s", buffer);
 	//itoa atoi?
@@ -23,7 +23,7 @@ int main(int argc, char*argv[]) {
 	zhengshu[cursor++ - 1] = '\0';
 	int len1 = strlen(zhengshu);
 	while (buffer[cursor] != 'E') {
-		xiaoshu[cursor - len1 - 2] = buffer[cursor];//ÕâÀïÊı×é·ÃÎÊµ½ÁËxiaoshu[-1]£¬¿ÉÒÔ²Ù×÷µ«»á±¨´í£¬Stack around the variable 'xiaoshu' was corrupted
+		xiaoshu[cursor - len1 - 2] = buffer[cursor];//è¿™é‡Œæ•°ç»„è®¿é—®åˆ°äº†xiaoshu[-1]ï¼Œå¯ä»¥æ“ä½œä½†ä¼šæŠ¥é”™ï¼ŒStack around the variable 'xiaoshu' was corrupted
 		cursor++;
 	}
 	xiaoshu[cursor++ - len1 - 2] = '\0';
@@ -36,7 +36,7 @@ int main(int argc, char*argv[]) {
 	if (zhengfu == '-')
 		printf("%c", zhengfu);
 
-	if (zhishu > 0) {//ÊÖ¶¯¸´ÖÆ×Ö·û´®
+	if (zhishu > 0) {//æ‰‹åŠ¨å¤åˆ¶å­—ç¬¦ä¸²
 		if (zhishu < len2) {
 			int i = 0, j = 0;
 			for (; i < zhishu; i++)
@@ -57,7 +57,7 @@ int main(int argc, char*argv[]) {
 			printf("%s", zhengshu);
 		}
 	}
-	else if (zhishu < 0) {//ÓÃÁË×Ö·û´®º¯Êı
+	else if (zhishu < 0) {//ç”¨äº†å­—ç¬¦ä¸²å‡½æ•°
 		zhishu = zhishu * (-1);
 		if (zhishu >= len1) {
 			int i = 0;
@@ -85,5 +85,5 @@ int main(int argc, char*argv[]) {
 	system("pause");
 	return 0;
 }
-//Ğ´µÃ²»¹»¼ò½à£¬¿´Õâ¸öhttps://www.liuchuo.net/archives/2061£¬ÓÃÁËstring¡£
-//»òÕß¿´ÊéÉÏµÄÒ²Ê¹ÓÃÁËchar[]£¬¶¼±ÈÎÒĞ´µÃ¼òµ¥µÃ¶à¡£
+//å†™å¾—ä¸å¤Ÿç®€æ´ï¼Œçœ‹è¿™ä¸ªhttps://www.liuchuo.net/archives/2061ï¼Œç”¨äº†stringã€‚
+//æˆ–è€…çœ‹ä¹¦ä¸Šçš„ä¹Ÿä½¿ç”¨äº†char[]ï¼Œéƒ½æ¯”æˆ‘å†™å¾—ç®€å•å¾—å¤šã€‚

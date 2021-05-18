@@ -29,13 +29,13 @@ Bign reverse(Bign fuck) {
 Bign add(Bign a, Bign b) {
 	Bign fuck;
 	fuck.len = a.len;
-	int shit = 0, pussy;//½øÎ»£¬±¾Î»
+	int shit = 0, pussy;//è¿›ä½ï¼Œæœ¬ä½
 	for (int i = 0; i < a.len; i++) {
 		pussy = a.digits[i] + b.digits[i] + shit;
 		shit = pussy / 10;
 		fuck.digits[i] = pussy % 10;
 	}
-	if (shit > 0) fuck.digits[fuck.len++] = shit;//µ¹ĞòµÄ
+	if (shit > 0) fuck.digits[fuck.len++] = shit;//å€’åºçš„
 	return fuck;
 }
 
@@ -64,8 +64,8 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//±ğÍüÁË»ØÎÄÊı±¾ÉíÕâÖÖÌØÊâÇé¿ö£¬484 0£¡
-//ÏÂÃæÕâÖÖĞ´·¨Ò²ÊÇ¿ÉÒÔµÄ
+//åˆ«å¿˜äº†å›æ–‡æ•°æœ¬èº«è¿™ç§ç‰¹æ®Šæƒ…å†µï¼Œ484 0ï¼
+//ä¸‹é¢è¿™ç§å†™æ³•ä¹Ÿæ˜¯å¯ä»¥çš„
 //#pragma warning(disable: 4996)
 //#include <cstdio>
 //#include <cstring>
@@ -97,13 +97,13 @@ int main(int argc, char *argv[]) {
 //Bign add(Bign a, Bign b) {
 //	Bign fuck;
 //	fuck.len = a.len;
-//	int shit = 0, pussy;//½øÎ»£¬±¾Î»
+//	int shit = 0, pussy;//è¿›ä½ï¼Œæœ¬ä½
 //	for (int i = 0; i < a.len; i++) {
 //		pussy = a.digits[i] + b.digits[i] + shit;
 //		shit = pussy / 10;
 //		fuck.digits[i] = pussy % 10;
 //	}
-//	if (shit > 0) fuck.digits[fuck.len++] = shit;//µ¹ĞòµÄ
+//	if (shit > 0) fuck.digits[fuck.len++] = shit;//å€’åºçš„
 //	return fuck;
 //}
 //
@@ -135,7 +135,7 @@ int main(int argc, char *argv[]) {
 //			break;
 //		}
 //	}
-//	if (i >= K) {//break²»»á¼Óµ½K
+//	if (i >= K) {//breakä¸ä¼šåŠ åˆ°K
 //		print(bign);
 //		printf("\n%d", i);
 //	}

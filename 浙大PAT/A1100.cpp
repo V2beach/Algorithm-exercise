@@ -6,14 +6,14 @@
 
 using namespace std;
 
-//¸É´àÓÃÈ«¾Ö±äÁ¿ÁË
+//å¹²è„†ç”¨å…¨å±€å˜é‡äº†
 string marsLow[13] = { "tret", "jan", "feb", "mar", "apr", "may", "jun", "jly", "aug", "sep", "oct", "nov", "dec" };
 string marsHigh[13] = { "", "tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mer", "jou" };
 map<string, int> earthLow;
 map<string, int> earthHigh;
 map<string, int>::iterator it;
 
-int toEarth(string mars) {//×Ö·û´®×ªÊ®Èı½øÖÆÔÙ×ªÊ®½øÖÆ
+int toEarth(string mars) {//å­—ç¬¦ä¸²è½¬åä¸‰è¿›åˆ¶å†è½¬åè¿›åˆ¶
 	int earth = 0, index = 0;
 	for (; index < mars.size(); index++)
 		if (mars[index] == ' ')
@@ -26,7 +26,7 @@ int toEarth(string mars) {//×Ö·û´®×ªÊ®Èı½øÖÆÔÙ×ªÊ®½øÖÆ
 	}
 	else {
 		it = earthLow.find(mars.substr(0, index));
-		if (it == earthLow.end()) {//ÊÇ13µÄ±¶Êı£¬·şÁË£¬ÕâÊÇÓ¢ÎÄÏ°¹ß£¬ÒªÁé»î×ª±äË¼Â·£¡
+		if (it == earthLow.end()) {//æ˜¯13çš„å€æ•°ï¼Œæœäº†ï¼Œè¿™æ˜¯è‹±æ–‡ä¹ æƒ¯ï¼Œè¦çµæ´»è½¬å˜æ€è·¯ï¼
 			it = earthHigh.find(mars.substr(0, index));
 			earth = it->second * 13;
 		}
@@ -35,7 +35,7 @@ int toEarth(string mars) {//×Ö·û´®×ªÊ®Èı½øÖÆÔÙ×ªÊ®½øÖÆ
 	return earth;
 }
 
-string toMars(string earth) {//Ê®½øÖÆ×ªÊ®Èı½øÖÆÔÙ×ª×Ö·û´®
+string toMars(string earth) {//åè¿›åˆ¶è½¬åä¸‰è¿›åˆ¶å†è½¬å­—ç¬¦ä¸²
 	string mars;
 	int res = stoi(earth);
 	if (res == 0) return marsLow[res];
@@ -54,7 +54,7 @@ void init() {
 }
 
 int main(int argc, char* argv[]) {
-	init();//³õÊ¼»¯mars±í
+	init();//åˆå§‹åŒ–marsè¡¨
 	int N;
 	ios::sync_with_stdio(false);
 	cin >> N;
@@ -64,18 +64,18 @@ int main(int argc, char* argv[]) {
 	for (int i = 0; i < N; i++) {
 		string input;
 		/*
-			Õı³£ÊäÈëÊä³ö
+			æ­£å¸¸è¾“å…¥è¾“å‡º
 		*/
 		getline(cin, input);
 		if (isdigit(input[0])) cout << toMars(input) << endl;
 		else cout << toEarth(input) << endl;
 		/*
-			ÎÄ¼şÊäÈëÊä³ö
+			æ–‡ä»¶è¾“å…¥è¾“å‡º
 		*/
-		//µÃµ½ËùÓĞµÄ²âÊÔÓÃÀı
+		//å¾—åˆ°æ‰€æœ‰çš„æµ‹è¯•ç”¨ä¾‹
 		outputFile << i << endl;
 		outputFile << toMars(to_string(i)) << endl;
-		//¿ªÊ¼±éÀú²âÊÔÈ«²¿ÓÃÀı£¬ºÍÁø‹S´úÂëÅÜ³öÀ´µÄ½á¹ûÊ¹ÓÃnotepad++µÄcompare²å¼ş½øĞĞÖğ¸ö±È¶Ô£¬²âÊÔÎÄ¼şÒÑ¾­ÉÏ´«µ½ÎÒµÄFTP·şÎñÆ÷
+		//å¼€å§‹éå†æµ‹è¯•å…¨éƒ¨ç”¨ä¾‹ï¼Œå’ŒæŸ³å©¼ä»£ç è·‘å‡ºæ¥çš„ç»“æœä½¿ç”¨notepad++çš„compareæ’ä»¶è¿›è¡Œé€ä¸ªæ¯”å¯¹ï¼Œæµ‹è¯•æ–‡ä»¶å·²ç»ä¸Šä¼ åˆ°æˆ‘çš„FTPæœåŠ¡å™¨
 		getline(inputFile, input);
 		if (isdigit(input[0])) outputFile << toMars(input) << endl;
 		else outputFile << toEarth(input) << endl;
@@ -83,9 +83,9 @@ int main(int argc, char* argv[]) {
 	system("pause");
 	return 0;
 }
-//±äÁ¿ÃûÆğÁË°ë¸öĞ¡Ê±¡£
-//ÎÒ´Ó0~169×Ô¼º²âÊÔÈ«¶¼¶ÔÁË£¬OJ¾ÍÊÇ¹ı²»ÁË£¡
-//ÕÒÁËÁ½¸öĞ¡Ê±Ã»ÕÒµ½ÎÊÌâµ½µ×³öÔÚÄÄºó¾ö¶¨£¬
-//Ñ§Ï°Ò»ÏÂÎÄ¼ş²Ù×÷£¬ÎÒ°Ñ169x2¸öÇé¿öÈ«²¿´òÓ¡Ò»±é¿´¿´ºÍÕıÈ·´ğ°¸µÄÇø±ğ£¬
-//Èç¹ûÈ·ÊµÃ»ÓĞÇø±ğ£¬ÄÇÎÊÌâ¾Í²»ÔÚÎÒ£¬Õâ¸öÌâÔİÊ±Ìø¹ı£¬»òÕßÎÊÒ»ÎÊÈºÀïµÄĞÖµÜÃÇ¡£
-//Ã»ÈË»Ø£¬ÔİÊ±·ÅÆúÁË£¬°ÑËùÓĞÎÄ¼ş´«µ½FTPÉÏÃæ£¬Ö®ºóĞ´Ìâ½â²©¿ÍµÄÊ±ºò»á°ÑÁ´½Ó·ÅÔÚÕâÆªÀïÃæ¡£
+//å˜é‡åèµ·äº†åŠä¸ªå°æ—¶ã€‚
+//æˆ‘ä»0~169è‡ªå·±æµ‹è¯•å…¨éƒ½å¯¹äº†ï¼ŒOJå°±æ˜¯è¿‡ä¸äº†ï¼
+//æ‰¾äº†ä¸¤ä¸ªå°æ—¶æ²¡æ‰¾åˆ°é—®é¢˜åˆ°åº•å‡ºåœ¨å“ªåå†³å®šï¼Œ
+//å­¦ä¹ ä¸€ä¸‹æ–‡ä»¶æ“ä½œï¼Œæˆ‘æŠŠ169x2ä¸ªæƒ…å†µå…¨éƒ¨æ‰“å°ä¸€éçœ‹çœ‹å’Œæ­£ç¡®ç­”æ¡ˆçš„åŒºåˆ«ï¼Œ
+//å¦‚æœç¡®å®æ²¡æœ‰åŒºåˆ«ï¼Œé‚£é—®é¢˜å°±ä¸åœ¨æˆ‘ï¼Œè¿™ä¸ªé¢˜æš‚æ—¶è·³è¿‡ï¼Œæˆ–è€…é—®ä¸€é—®ç¾¤é‡Œçš„å…„å¼Ÿä»¬ã€‚
+//æ²¡äººå›ï¼Œæš‚æ—¶æ”¾å¼ƒäº†ï¼ŒæŠŠæ‰€æœ‰æ–‡ä»¶ä¼ åˆ°FTPä¸Šé¢ï¼Œä¹‹åå†™é¢˜è§£åšå®¢çš„æ—¶å€™ä¼šæŠŠé“¾æ¥æ”¾åœ¨è¿™ç¯‡é‡Œé¢ã€‚

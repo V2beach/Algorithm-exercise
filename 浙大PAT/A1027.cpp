@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
 	for (int i = 0; i < 3; i++) {
 		int decimal;
 		std::scanf("%d", &decimal);
-		std::printf("%c%c", base13[decimal / 13], base13[decimal % 13]);//ÒòÎªÖ»ÊÇÁ½Î»Êý£¬¿ÉÒÔÑ¡Ôñ²»ÓÃÍ¨ÓÃµÄ½øÖÆ×ª»»´úÂë
+		std::printf("%c%c", base13[decimal / 13], base13[decimal % 13]);//å› ä¸ºåªæ˜¯ä¸¤ä½æ•°ï¼Œå¯ä»¥é€‰æ‹©ä¸ç”¨é€šç”¨çš„è¿›åˆ¶è½¬æ¢ä»£ç 
 	}
 	return 0;
 }

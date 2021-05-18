@@ -20,11 +20,11 @@ int main(int argc, char *argv[]) {
 	int Msize, N, shit, pussy, nipple;
 	scanf("%d %d", &Msize, &N);
 	while (!isPrime(Msize++));
-	Msize--;//ÕÒµ½µÚÒ»¸öËØÊý
+	Msize--;//æ‰¾åˆ°ç¬¬ä¸€ä¸ªç´ æ•°
 	bool *hashTable = new bool[Msize];
 	memset(hashTable, false, Msize * sizeof(bool));
 	for (int i = 0; i < N; i++) {
-		flag = true;//ÕÒ²»µ½Î»ÖÃµÄÆìÖÄ
+		flag = true;//æ‰¾ä¸åˆ°ä½ç½®çš„æ——å¸œ
 		scanf("%d", &shit);
 		pussy = shit % Msize;
 		if (!hashTable[pussy]) {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 					flag = false;
 					hashTable[nipple] = true;
 					printf("%d", nipple);
-					break;//ÕâÀï²»Ìø³öÀ´£¬¾ÍËã²»ÊÇËÀÑ­»·Ò²Ò»¶¨»á±¨³¬Ê±µÄ´íÎó£¬Ò»¶¨×¢ÒâÓÅ»¯Ï¸½Ú
+					break;//è¿™é‡Œä¸è·³å‡ºæ¥ï¼Œå°±ç®—ä¸æ˜¯æ­»å¾ªçŽ¯ä¹Ÿä¸€å®šä¼šæŠ¥è¶…æ—¶çš„é”™è¯¯ï¼Œä¸€å®šæ³¨æ„ä¼˜åŒ–ç»†èŠ‚
 				}
 			}
 			if (flag) printf("-");
@@ -48,4 +48,4 @@ int main(int argc, char *argv[]) {
 	system("pause");
 	return 0;
 }
-//±¸×¢£¬³¬Ê±£¡¶þ´ÎÌ½²é·¨½â¾ö³åÍ»ÄÇÀï£¬¿´µ½Å£¿ÍÊý¾Ý¹æÄ£´óµÄÓÃÀý¾Í¸ÃÏëµ½ÕâÒ»µã¡£
+//å¤‡æ³¨ï¼Œè¶…æ—¶ï¼äºŒæ¬¡æŽ¢æŸ¥æ³•è§£å†³å†²çªé‚£é‡Œï¼Œçœ‹åˆ°ç‰›å®¢æ•°æ®è§„æ¨¡å¤§çš„ç”¨ä¾‹å°±è¯¥æƒ³åˆ°è¿™ä¸€ç‚¹ã€‚
