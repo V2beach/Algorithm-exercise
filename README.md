@@ -1,3 +1,3 @@
 # Algorithm-exercise
 
-刷题repo。
+刷题repo
